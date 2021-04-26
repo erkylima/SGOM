@@ -30,6 +30,9 @@ public class Usuario {
     @Column(name="email")
     private String email;
 
+    @Column(name="email")
+    private int perfil;
+    
     public Long getId() {
         return id;
     }
@@ -78,6 +81,14 @@ public class Usuario {
         this.email = email;
     }
 
+    public int getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(int perfil) {
+        this.perfil = perfil;
+    }
+    
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
