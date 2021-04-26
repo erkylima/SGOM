@@ -1,24 +1,21 @@
-package com.manuserv.apirest.controller;
+package com.manuserv.apirest.resource;
 
-import com.manuserv.apirest.models.Empresa;
 import com.manuserv.apirest.repository.EmpresaRepository;
+import com.manuserv.apirest.repository.UsuarioRepository;
 import java.util.List;
-import java.util.stream.LongStream;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping({"/empresas"})
-public class EmpresaController {
+@RequestMapping({"/usuarios"})
+public class UsuarioController {
     
     @Autowired
-    private EmpresaRepository repository;
+    private UsuarioRepository repository;
 
-    public EmpresaController(EmpresaRepository repository) {
+    public UsuarioController(UsuarioRepository repository) {
         this.repository = repository;
     }
     
