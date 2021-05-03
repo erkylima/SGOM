@@ -9,8 +9,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ms_administrador")
-public class Administrador implements Serializable {
+@Table(name="ms_oficina")
+public class Oficina implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

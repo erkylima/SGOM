@@ -1,9 +1,8 @@
 package com.manuserv.apirest.repository;
 
-import com.manuserv.apirest.models.Administrador;
+import com.manuserv.apirest.models.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
-public interface AdministradorRepository extends JpaRepository<Administrador, Long>{
+public interface AdministradorRepository extends JpaRepository<Empresa, Long>{
     
 }

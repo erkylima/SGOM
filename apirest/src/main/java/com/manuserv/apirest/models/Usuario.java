@@ -1,21 +1,23 @@
 package com.manuserv.apirest.models;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="ms_usuario")
-public class Usuario {
+public class Usuario implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name="empresa")
+    @ManyToOne
     private Empresa empresa;
     
     @Column(name="nome")
@@ -30,7 +32,7 @@ public class Usuario {
     @Column(name="email")
     private String email;
 
-    @Column(name="email")
+    @Column(name="perfil")
     private int perfil;
     
     public Long getId() {

@@ -19,6 +19,7 @@ export class AppService {
     async login({email, password}) {
         try {
             const token = await gk.loginByAuth(email, password);
+            // const token = "asdqw";
             localStorage.setItem('token', token);
             this.router.navigate(['/']);
         } catch (error) {

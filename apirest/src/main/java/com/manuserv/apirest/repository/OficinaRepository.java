@@ -1,9 +1,9 @@
 package com.manuserv.apirest.repository;
 
-import com.manuserv.apirest.models.Empresa;
+import com.manuserv.apirest.models.Oficina;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
+public interface OficinaRepository extends JpaRepository<Oficina, Long>{
     
     
     

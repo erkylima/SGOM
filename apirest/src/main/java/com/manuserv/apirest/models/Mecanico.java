@@ -1,21 +1,23 @@
 package com.manuserv.apirest.models;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="ms_mecanico")
-public class Mecanico {
+public class Mecanico implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name="usuario")
+    @OneToOne
     private Usuario usuario;
 
     public Long getId() {
