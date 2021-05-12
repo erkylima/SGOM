@@ -35,6 +35,9 @@ public class Usuario implements Serializable {
     @Column(name="perfil")
     private int perfil;
     
+    @Column(name="token")
+    private String token;
+    
     public Long getId() {
         return id;
     }
@@ -89,6 +92,14 @@ public class Usuario implements Serializable {
 
     public void setPerfil(int perfil) {
         this.perfil = perfil;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
     
     @Override

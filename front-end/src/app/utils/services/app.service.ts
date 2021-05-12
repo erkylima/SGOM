@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
@@ -14,12 +15,13 @@ export class AppService {
         image: 'assets/img/user2-160x160.jpg'
     };
 
-    constructor(private router: Router, private toastr: ToastrService) {}
+    constructor(private router: Router, private toastr: ToastrService, private html:HttpClient) {}
 
     async login({email, password}) {
         try {
-            const token = await gk.loginByAuth(email, password);
-            // const token = "asdqw";
+            // const token = await this.html.post('');
+
+            const token = "asdqw";
             localStorage.setItem('token', token);
             this.router.navigate(['/']);
         } catch (error) {

@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ms_usuario")
-public class Usuario implements Serializable {
+@Table(name="ms_carro")
+public class Carro implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,20 +20,17 @@ public class Usuario implements Serializable {
     @ManyToOne
     private Empresa empresa;
     
-    @Column(name="nome")
-    private String nome;
+    @Column(name="modelo")
+    private String modelo;
     
-    @Column(name="usuario")
-    private String usuario;
+    @Column(name="placa")
+    private String placa;
     
-    @Column(name="senha")
-    private String senha;
+    @Column(name="ano")
+    private int ano;
     
-    @Column(name="email")
-    private String email;
-
-    @Column(name="perfil")
-    private int perfil;
+    @Column(name="marca")
+    private String marca;
     
     public Long getId() {
         return id;
@@ -51,46 +48,40 @@ public class Usuario implements Serializable {
         this.empresa = empresa;
     }
 
-    public String getNome() {
-        return nome;
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getPlaca() {
+        return placa;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
-    public String getSenha() {
-        return senha;
+    public int getAno() {
+        return ano;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(int perfil) {
-        this.perfil = perfil;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
     
+    
+   
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.

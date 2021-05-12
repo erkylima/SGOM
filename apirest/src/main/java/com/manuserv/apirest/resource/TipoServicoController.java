@@ -2,6 +2,8 @@ package com.manuserv.apirest.resource;
 
 import com.manuserv.apirest.repository.EmpresaRepository;
 import com.manuserv.apirest.repository.CarroRepository;
+import com.manuserv.apirest.repository.ProcedimentoRepository;
+import com.manuserv.apirest.repository.TipoServicoRepository;
 import java.util.List;
 import java.util.stream.LongStream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping({"/carros"})
-public class CarroController {
+@RequestMapping({"/tipo_servicos"})
+public class TipoServicoController {
     
     @Autowired
-    private CarroRepository repository;
+    private TipoServicoRepository repository;
 
-    public CarroController(CarroRepository repository) {
+    public TipoServicoController(TipoServicoRepository repository) {
         this.repository = repository;
     }
          
