@@ -1,19 +1,38 @@
 <div class="register-box">
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a [routerLink]="['/']" class="h1"><b>Admin</b>LTE</a>
+            <a [routerLink]="['/']" class="h1"><b>Manu</b>SERV</a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">Register a new membership</p>
+            <p class="login-box-msg">Cadastre sua oficina</p>
 
             <form [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="input-group mb-3">
-                    <input
-                        formControlName="email"
-                        type="email"
-                        class="form-control"
-                        placeholder="Email"
-                    />
+                    <input formControlName="nome" type="text" class="form-control" placeholder="Nome da Oficina" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-id-card"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input formControlName="cnpj" type="number" class="form-control" placeholder="CNPJ" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-building"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input formControlName="usuario" type="text" class="form-control" placeholder="Usuario" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input formControlName="email" type="email" class="form-control" placeholder="Email" />
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -21,12 +40,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input
-                        formControlName="password"
-                        type="password"
-                        class="form-control"
-                        placeholder="Password"
-                    />
+                    <input formControlName="password" type="password" class="form-control" placeholder="Senha" />
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -34,12 +48,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input
-                        formControlName="retypePassword"
-                        type="password"
-                        class="form-control"
-                        placeholder="Retype password"
-                    />
+                    <input formControlName="retypePassword" type="password" class="form-control" placeholder="Repetir Senha" />
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -49,14 +58,9 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
-                            <input
-                                type="checkbox"
-                                id="agreeTerms"
-                                name="terms"
-                                value="agree"
-                            />
+                            <input type="checkbox" id="agreeTerms" name="terms" value="agree" />
                             <label for="agreeTerms">
-                                I agree to the <a href="#">terms</a>
+                                Eu concordo com os  <a href="#">termos</a> de compromisso.
                             </label>
                         </div>
                     </div>
@@ -70,19 +74,7 @@
                 </div>
             </form>
 
-            <div class="social-auth-links text-center">
-                <a href="#" class="btn btn-block btn-primary">
-                    <i class="fab fa-facebook mr-2"></i>
-                    Sign up using Facebook
-                </a>
-                <a href="#" class="btn btn-block btn-danger">
-                    <i class="fab fa-google-plus mr-2"></i>
-                    Sign up using Google+
-                </a>
-            </div>
-
-            <a [routerLink]="['/login']" class="text-center"
-                >I already have a membership</a
+            <a [routerLink]="['/login']" class="text-center">Já estou cadastrado</a
             >
         </div>
         <!-- /.form-box -->

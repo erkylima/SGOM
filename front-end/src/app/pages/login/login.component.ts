@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             'login-page'
         );
         this.loginForm = new FormGroup({
-            email: new FormControl(null, Validators.required),
+            username: new FormControl(null, Validators.required),
             password: new FormControl(null, Validators.required)
         });
     }
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             await this.appService.login(this.loginForm.value);
             this.isAuthLoading = false;
         } else {
-            this.toastr.error('Hello world!', 'Toastr fun!');
+            this.toastr.error('Algo deu errado!', 'Por favor, tente novamente!');
         }
     }
 

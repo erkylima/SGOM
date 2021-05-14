@@ -17,7 +17,7 @@ export class MenuSidebarComponent implements OnInit, AfterViewInit {
     @ViewChild('mainSidebar', {static: false}) mainSidebar;
     @Output() mainSidebarHeight: EventEmitter<any> = new EventEmitter<any>();
     constructor(public appService: AppService) {}
-
+    nome = localStorage.getItem("nome");
     ngOnInit() {}
 
     ngAfterViewInit() {

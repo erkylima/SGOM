@@ -1,6 +1,9 @@
 package com.manuserv.apirest.models;
 
-import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +12,29 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@Builder
 @Table(name="ms_usuario")
-public class Usuario implements Serializable {
+public class Usuario implements UserDetails {
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8421614466454225405L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
@@ -24,19 +45,28 @@ public class Usuario implements Serializable {
     private String nome;
     
     @Column(name="usuario")
-    private String usuario;
+    private String username;
     
     @Column(name="senha")
-    private String senha;
+    private String password;
     
     @Column(name="email")
     private String email;
 
-    @Column(name="perfil")
-    private int perfil;
+    @Column(name="authorities")
+    private String authorities;
     
-    @Column(name="token")
-    private String token;
+    
+	public Usuario(Empresa empresa, String nome, String username, String password, String email, String authorities) {
+		super();
+		this.empresa = empresa;
+		this.nome = nome;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.authorities = authorities;
+	}    
+    
     
     public Long getId() {
         return id;
@@ -62,22 +92,6 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -85,27 +99,57 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public int getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(int perfil) {
-        this.perfil = perfil;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
     
-    @Override
-    public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
-    }    
-    
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return Arrays.stream(authorities.split(","))
+				.map(SimpleGrantedAuthority::new)
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return username;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [username=" + username + "]";
+	}
+
+
+	
     
 }

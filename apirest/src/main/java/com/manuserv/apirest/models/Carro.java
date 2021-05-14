@@ -79,13 +79,7 @@ public class Carro implements Serializable {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-    
-    
-   
-    @Override
-    public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
-    }    
+     
     
     
 }

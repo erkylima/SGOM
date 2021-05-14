@@ -1,14 +1,10 @@
 package com.manuserv.apirest.resource;
 
-import com.manuserv.apirest.repository.EmpresaRepository;
-import com.manuserv.apirest.repository.CarroRepository;
-import com.manuserv.apirest.repository.ProcedimentoRepository;
 import com.manuserv.apirest.repository.TipoServicoRepository;
+
 import java.util.List;
-import java.util.stream.LongStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +20,10 @@ public class TipoServicoController {
         this.repository = repository;
     }
          
+    @GetMapping
+    public List findAll(){
+       return repository.findAll();
+    }            
         
 //@Bean
 //    CommandLineRunner init(UsuarioRepository repository) {
