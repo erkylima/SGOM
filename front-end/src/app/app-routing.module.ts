@@ -1,3 +1,7 @@
+import { EditCarroComponent } from './views/carro/edit-empresa/edit-carro.component';
+import { CarroComponent } from './views/carro/carro.component';
+import { EditEmpresaComponent } from './views/blank/edit-empresa/edit-empresa.component';
+import { CreateEmpresaComponent } from './views/blank/create-empresa/create-empresa.component';
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MainComponent} from './pages/main/main.component';
@@ -10,6 +14,7 @@ import {AuthGuard} from './utils/guards/auth.guard';
 import {NonAuthGuard} from './utils/guards/non-auth.guard';
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {RecoverPasswordComponent} from './pages/recover-password/recover-password.component';
+import { CreateCarroComponent } from './views/carro/create-empresa/create-carro.component';
 
 const routes: Routes = [
     {
@@ -23,8 +28,26 @@ const routes: Routes = [
                 component: ProfileComponent
             },
             {
-                path: 'blank',
+                path: 'empresa',
                 component: BlankComponent
+            },
+            {
+              path: 'empresa/criar',
+              component: CreateEmpresaComponent
+            },{
+              path: 'empresa/edit/:id',
+              component: EditEmpresaComponent
+            },
+            {
+              path: 'carro',
+              component: CarroComponent
+            },
+            {
+              path: 'carro/criar',
+              component: CreateCarroComponent
+            },{
+              path: 'carro/edit/:id',
+              component: EditCarroComponent
             },
             {
                 path: '',

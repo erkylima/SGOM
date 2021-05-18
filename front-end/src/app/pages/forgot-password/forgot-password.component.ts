@@ -24,14 +24,17 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
             'login-page'
         );
         this.forgotPasswordForm = new FormGroup({
-            email: new FormControl(null, Validators.required)
+            email: new FormControl(null, Validators.required),
+            cnpj: new FormControl(null, Validators.required),
+            novaSenha: new FormControl(null, Validators.required)
         });
     }
 
     forgotPassword() {
         if (this.forgotPasswordForm.valid) {
+          this.appService.recover(this.forgotPasswordForm.value);
         } else {
-            this.toastr.error('Hello world!', 'Toastr fun!');
+            this.toastr.error('Preencha todos os campos!');
         }
     }
 

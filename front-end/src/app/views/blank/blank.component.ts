@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Empresa } from './empresa.model';
+import { EmpresaService } from './empresa.service';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
     selector: 'app-blank',
@@ -6,7 +9,12 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./blank.component.scss']
 })
 export class BlankComponent implements OnInit {
-    constructor() {}
+    constructor(private renderer: Renderer2, private toastr: ToastrService,
+      private empresaService:EmpresaService) {}
 
-    ngOnInit() {}
+    empresaList:Empresa;
+
+    ngOnInit() {
+      this.empresaService.getEmpresas().subscribe(res => this.empresaList=res);
+    }
 }

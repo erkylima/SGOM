@@ -3,7 +3,7 @@ export class SignUpInfo {
   cnpj: string;
   username: string;
   email: string;
-  roles: string;
+  role: string;
   password: string;
 
   constructor(name: string, cnpj: string, username: string, email: string, password: string) {
@@ -12,6 +12,6 @@ export class SignUpInfo {
       this.username = username;
       this.email = email;
       this.password = password;
-      this.roles= "ROLE_OFICINA";
+      this.role= "ROLE_OFICINA";
   }
 }

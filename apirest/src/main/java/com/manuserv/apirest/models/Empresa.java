@@ -8,20 +8,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@Data
 @Entity
-@Table(name="ms_empresa")
+@NoArgsConstructor
+@Builder@Table(name="ms_empresa")
 public class Empresa implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    
+    
     @Column(name="nome")
     private String nome;
     
-    @Column(name="cpnj")
-    private String cpnj;
+    @Column(name="cnpj")
+    private String cnpj;
 
     public Long getId() {
         return id;
@@ -39,13 +48,19 @@ public class Empresa implements Serializable {
         this.nome = nome;
     }
 
-    public String getCpnj() {
-        return cpnj;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setCpnj(String cpnj) {
-        this.cpnj = cpnj;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
+
+	public Empresa(Long id, String nome, String cnpj) {
+		this.id = id;
+		this.nome = nome;
+		this.cnpj = cnpj;
+	}
     
     
     

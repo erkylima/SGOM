@@ -1,4 +1,8 @@
-import {BrowserModule} from '@angular/platform-browser';
+import { CarroComponent } from './views/carro/carro.component';
+import { EditCarroComponent } from './views/carro/edit-empresa/edit-carro.component';
+import { EditEmpresaComponent } from './views/blank/edit-empresa/edit-empresa.component';
+import { CreateEmpresaComponent } from './views/blank/create-empresa/create-empresa.component';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -27,8 +31,9 @@ import {UserDropdownMenuComponent} from './pages/main/header/user-dropdown-menu/
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {RecoverPasswordComponent} from './pages/recover-password/recover-password.component';
 import {LanguageDropdownComponent} from './pages/main/header/language-dropdown/language-dropdown.component';
+import { CreateCarroComponent } from './views/carro/create-empresa/create-carro.component';
 
-registerLocaleData(localeEn, 'en-EN');
+registerLocaleData(localeEn, 'pt-BR');
 
 @NgModule({
     declarations: [
@@ -48,7 +53,12 @@ registerLocaleData(localeEn, 'en-EN');
         UserDropdownMenuComponent,
         ForgotPasswordComponent,
         RecoverPasswordComponent,
-        LanguageDropdownComponent
+        LanguageDropdownComponent,
+        CreateEmpresaComponent,
+        EditEmpresaComponent,
+        EditCarroComponent,
+        CreateCarroComponent,
+        CarroComponent
     ],
     imports: [
         BrowserModule,
@@ -63,7 +73,8 @@ registerLocaleData(localeEn, 'en-EN');
         }),
         NgbModule
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: [
+      Title
+    ],    bootstrap: [AppComponent]
 })
 export class AppModule {}

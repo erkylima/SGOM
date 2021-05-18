@@ -9,7 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @Entity
+@NoArgsConstructor
 @Table(name="ms_carro")
 public class Carro implements Serializable {
     
@@ -32,7 +37,18 @@ public class Carro implements Serializable {
     @Column(name="marca")
     private String marca;
     
-    public Long getId() {
+    
+    
+    public Carro(Long id, Empresa empresa, String modelo, String placa, int ano, String marca) {
+		this.id = id;
+		this.empresa = empresa;
+		this.modelo = modelo;
+		this.placa = placa;
+		this.ano = ano;
+		this.marca = marca;
+	}
+
+	public Long getId() {
         return id;
     }
 

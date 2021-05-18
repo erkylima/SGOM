@@ -6,8 +6,7 @@ import javax.validation.constraints.*;
 public class SignUpForm {
 	
 	@NotBlank
-	@Min(1)
-	private int empresaId;
+	private String empresa;
 	
     @NotBlank
     @Size(min = 3, max = 50)
@@ -16,12 +15,16 @@ public class SignUpForm {
     @NotBlank
     @Size(min = 3, max = 50)
     private String username;
-
+    
     @NotBlank
+    private int cnpj;
+
+	@NotBlank
     @Size(max = 60)
     @Email
     private String email;
     
+	@NotBlank	
     private String role;
     
     @NotBlank
@@ -30,12 +33,12 @@ public class SignUpForm {
     
     
 
-	public int getEmpresaId() {
-		return empresaId;
+	public String getEmpresa() {
+		return empresa;
 	}
 
-	public void setEmpresaId(int empresaId) {
-		this.empresaId = empresaId;
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
 	}
 
 	public String getName() {
@@ -61,6 +64,14 @@ public class SignUpForm {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public int getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(int cnpj) {
+		this.cnpj = cnpj;
+	}
 
     public String getPassword() {
         return password;

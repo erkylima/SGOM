@@ -4,19 +4,19 @@
             <a [routerLink]="['/']" class="h1"><b>Manu</b>SERV</a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Acesse sua conta de usuário</p>
 
             <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <div class="input-group mb-3">
-                    <input formControlName="username" type="username" class="form-control" placeholder="Username" />
+                    <input formControlName="username" type="username" class="form-control" placeholder="Usuário" />
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+                            <span class="fas fa-user"></span>
                         </div>
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input formControlName="password" type="password" class="form-control" placeholder="Password" />
+                    <input formControlName="password" type="password" class="form-control" placeholder="Sua Senha" />
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -24,37 +24,38 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8">
+                    <!-- <div class="col-8">
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember" />
                             <label for="remember"> Remember Me </label>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- /.col -->
                     <div class="col-4">
-                        <app-button [type]="'submit'" [block]="true" [text]="'Sign In'" [loading]="isAuthLoading"></app-button>
+                        <app-button [type]="'submit'" [block]="true" [text]="'Entrar'" [loading]="isAuthLoading"></app-button>
+                    </div>
+                    <div class="col-4">
+                        <a [routerLink]="['/register']" class="text-center">
+                            <app-button [block]="true" [text]="'Cadastrar'" [loading]="isAuthLoading"></app-button>
+                        </a>
+
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
-            <div class="social-auth-links text-center mb-3">
+            <!-- <div class="social-auth-links text-center mb-3">
                 <a href="#" class="btn btn-block btn-primary">
                     <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
                 </a>
                 <a href="#" class="btn btn-block btn-danger">
                     <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
                 </a>
-            </div>
+            </div> -->
             <!-- /.social-auth-links -->
 
-            <p class="mb-1">
-                <a [routerLink]="['/forgot-password']">I forgot my password</a>
-            </p>
-            <p class="mb-0">
-                <a [routerLink]="['/register']" class="text-center">
-                    Register a new membership
-                </a>
+            <p class="mt-2 mb-1">
+                <a [routerLink]="['/forgot-password']">Esqueci a senha</a>
             </p>
         </div>
         <!-- /.login-card-body -->

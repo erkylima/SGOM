@@ -25,7 +25,7 @@
                 <h3 class="card-title">Lista de Empresas</h3>
 
                 <div class="card-tools">
-                    <a [routerLink]="['/empresa/criar']" class="btn btn-success">
+                    <a [([routerLink]="['/carros/criar']" routerLinkActive="router-link-active" )] class="btn btn-success">
                         <i class="fas fa-plus"></i> Criar
                     </a>
                 </div>
@@ -37,16 +37,16 @@
                             <th style="width: 10px">#ID</th>
                             <th>Nome</th>
                             <th>CNPJ</th>
-                            <th style="width: 220px">Label</th>
+                            <th>Label</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let empresa of empresaList">
-                            <td>{{empresa.id}}</td>
-                            <td>{{empresa.nome}}</td>
-                            <td>{{empresa.cnpj}}</td>
+                        <tr *ngFor="let carro of carroList">
+                            <td>{{carro.id}}</td>
+                            <td>{{carro.modelo}}</td>
+                            <td>{{carro.ano}}</td>
                             <td>
-                                <a routerLink="edit/{{empresa.id}}" class="btn btn-info btn-sm">
+                                <a routerLink="/edit/{{carro.id}}" routerLinkActive="router-link-active" )] class="btn btn-info btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
                                 <a class="btn btn-danger btn-sm">
