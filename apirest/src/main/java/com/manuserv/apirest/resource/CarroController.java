@@ -12,6 +12,7 @@ import com.manuserv.apirest.repository.EmpresaRepository;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -50,14 +51,15 @@ public class CarroController {
     
     @PostMapping("/add")
     public ResponseEntity<?> adicionarCarro(@Valid @RequestBody CarroForm carroform){
-
+    	log.info(carroform.getModelo());
     	if (carroform.getPlaca().isEmpty()  && carroform.getModelo().isEmpty()) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Todos os campos precisam ser preenchidos!"),
 					HttpStatus.BAD_REQUEST);
 		}
-    	
-    	Long id = new Long(0);
-    	Carro carro = new Carro(id,carroform.getEmpresa(),carroform.getModelo(),carroform.getPlaca(), carroform.getAno(), carroform.getMarca());
+    	log.info(carroform.getEmpresa());
+    	Optional<Empresa> empresa = repositoryEmp.findById(carroform.getEmpresa().getId());
+    	    	
+    	Carro carro = new Carro(carroform.getId(),empresa.get(),carroform.getModelo(),carroform.getPlaca(), carroform.getAno(), carroform.getMarca());
     	
     	repository.save(carro);
     	return new ResponseEntity<>(new ResponseMessage("Carro criado com sucesso!"), HttpStatus.OK);
@@ -71,17 +73,16 @@ public class CarroController {
     
     @PutMapping("/{id}")
     public ResponseEntity<?> editCarro(@PathVariable Long id, @Valid @RequestBody CarroForm carroform){
-
-    	if (repository.existsById(carroform.getId()) && repositoryEmp.existsById(carroform.getEmpresa().getId())) {
+    	
+    	if (!repository.existsById(id) && !repositoryEmp.existsById(carroform.getEmpresa().getId())) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Carro não encontrado!"),
 					HttpStatus.BAD_REQUEST);
 		}
     	Carro carro = repository.findById(id).get();
-    	carro.setAno(carro.getAno());
-    	carro.setMarca(carro.getMarca());
+    	carro.setAno(carroform.getAno());
+    	carro.setMarca(carroform.getMarca());
     	carro.setModelo(carroform.getModelo());
     	carro.setPlaca(carroform.getPlaca());
-
     	repository.save(carro);
     	return new ResponseEntity<>(new ResponseMessage("Carro editado com sucesso!"), HttpStatus.OK);
     } 

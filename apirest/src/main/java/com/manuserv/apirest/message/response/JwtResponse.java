@@ -11,12 +11,14 @@ public class JwtResponse {
 	private String username;
 	private String nome;
 	private Collection<? extends GrantedAuthority> authorities;
-
-	public JwtResponse(String accessToken, String username, String nome, Collection<? extends GrantedAuthority> authorities) {
+	private String empresaId;
+	
+	public JwtResponse(String accessToken, String username, String nome, Collection<? extends GrantedAuthority> authorities, String empresaId) {
 		this.token = accessToken;
 		this.username = username;
 		this.nome = nome;
 		this.authorities = authorities;
+		this.empresaId = empresaId;
 	}
 
 	public String getAccessToken() {
@@ -54,5 +56,15 @@ public class JwtResponse {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
+
+	public String getEmpresaId() {
+		return empresaId;
+	}
+
+	public void setEmpresaId(String empresaId) {
+		this.empresaId = empresaId;
+	}
+    
+    
     
 }

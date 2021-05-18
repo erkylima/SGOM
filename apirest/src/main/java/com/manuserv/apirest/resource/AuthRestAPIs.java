@@ -66,7 +66,7 @@ public class AuthRestAPIs {
 		String jwt = jwtProvider.generateJwtToken(authentication);
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		Usuario usuario = userRepository.findByUsername(loginRequest.getUsername()).get();
-		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), usuario.getNome(),	 userDetails.getAuthorities()));
+		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), usuario.getNome(),	 userDetails.getAuthorities(), usuario.getEmpresa().getId().toString()));
 	}
 
 	@PostMapping("/signup")

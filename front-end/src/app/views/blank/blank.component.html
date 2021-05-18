@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Carro Page</h1>
+                <h1>Empresa Page</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Carro Page</li>
+                    <li class="breadcrumb-item active">Empresa Page</li>
                 </ol>
             </div>
         </div>
@@ -25,7 +25,10 @@
                 <h3 class="card-title">Lista de Empresas</h3>
 
                 <div class="card-tools">
-                    <a [routerLink]="['/empresa/criar']" class="btn btn-success">
+                    <a
+                        [routerLink]="['/empresa/criar']"
+                        class="btn btn-success"
+                    >
                         <i class="fas fa-plus"></i> Criar
                     </a>
                 </div>
@@ -42,11 +45,14 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let empresa of empresaList">
-                            <td>{{empresa.id}}</td>
-                            <td>{{empresa.nome}}</td>
-                            <td>{{empresa.cnpj}}</td>
+                            <td>{{ empresa.id }}</td>
+                            <td>{{ empresa.nome }}</td>
+                            <td>{{ empresa.cnpj }}</td>
                             <td>
-                                <a routerLink="edit/{{empresa.id}}" class="btn btn-info btn-sm">
+                                <a
+                                    routerLink="edit/{{ empresa.id }}"
+                                    class="btn btn-info btn-sm"
+                                >
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
                                 <a class="btn btn-danger btn-sm">

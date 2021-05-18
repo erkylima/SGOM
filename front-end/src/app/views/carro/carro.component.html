@@ -22,10 +22,10 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Lista de Empresas</h3>
+                <h3 class="card-title">Lista de Carros</h3>
 
                 <div class="card-tools">
-                    <a [([routerLink]="['/carros/criar']" routerLinkActive="router-link-active" )] class="btn btn-success">
+                    <a [routerLink]="['/carro/criar']" class="btn btn-success">
                         <i class="fas fa-plus"></i> Criar
                     </a>
                 </div>
@@ -35,18 +35,25 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">#ID</th>
-                            <th>Nome</th>
-                            <th>CNPJ</th>
-                            <th>Label</th>
+                            <th>Modelo</th>
+                            <th>Ano</th>
+                            <th>Placa</th>
+                            <th>Marca</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let carro of carroList">
-                            <td>{{carro.id}}</td>
-                            <td>{{carro.modelo}}</td>
-                            <td>{{carro.ano}}</td>
+                            <td>{{ carro.id }}</td>
+                            <td>{{ carro.modelo }}</td>
+                            <td>{{ carro.ano }}</td>
+                            <td>{{ carro.placa }}</td>
+                            <td>{{ carro.marca }}</td>
                             <td>
-                                <a routerLink="/edit/{{carro.id}}" routerLinkActive="router-link-active" )] class="btn btn-info btn-sm">
+                                <a
+                                    routerLink="edit/{{ carro.id }}"
+                                    class="btn btn-info btn-sm"
+                                >
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
                                 <a class="btn btn-danger btn-sm">
