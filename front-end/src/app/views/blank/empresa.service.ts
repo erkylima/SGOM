@@ -90,5 +90,8 @@ export class EmpresaService {
   adicionarEditarEmpresaFunction(info: Empresa): Observable<string> {
     return this.http.post<string>(this.urlEmpresas+'/add', info, httpOptions);
   }
+  delete(id:string):Observable<string>{
+    return this.http.delete<string>(this.urlEmpresas+"/"+id, httpOptions);
+  }
 
 }

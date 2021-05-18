@@ -1,3 +1,5 @@
+import { EditProcedimentoComponent } from './views/procedimento/edit-procedimento/edit-procedimento.component';
+import { ProcedimentoComponent } from './views/procedimento/procedimento.component';
 import { EditTipoServicoComponent } from './views/tiposervico/edit-tiposervico/edit-tiposervico.component';
 import { CreateTipoServicoComponent } from './views/tiposervico/create-tiposervico/create-tiposervico.component';
 import { TipoServicoComponent } from './views/tiposervico/tiposervico.component';
@@ -35,6 +37,7 @@ import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.c
 import {RecoverPasswordComponent} from './pages/recover-password/recover-password.component';
 import {LanguageDropdownComponent} from './pages/main/header/language-dropdown/language-dropdown.component';
 import { CreateCarroComponent } from './views/carro/create-empresa/create-carro.component';
+import { CreateProcedimentoComponent } from './views/procedimento/create-procedimento/create-procedimento.component';
 
 registerLocaleData(localeEn, 'pt-BR');
 
@@ -64,7 +67,10 @@ registerLocaleData(localeEn, 'pt-BR');
         CarroComponent,
         TipoServicoComponent,
         CreateTipoServicoComponent,
-        EditTipoServicoComponent
+        EditTipoServicoComponent,
+        ProcedimentoComponent,
+        CreateProcedimentoComponent,
+        EditProcedimentoComponent
     ],
     imports: [
         BrowserModule,

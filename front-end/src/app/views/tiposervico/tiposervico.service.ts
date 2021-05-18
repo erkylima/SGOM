@@ -80,5 +80,8 @@ export class TipoServicoService {
   adicionarEditarTipoServicoFunction(info: TipoServico): Observable<string> {
     return this.http.post<string>(this.urlTipoServicos+'/add', info, httpOptions);
   }
+  delete(id:string):Observable<string>{
+    return this.http.delete<string>(this.urlTipoServicos+"/"+id, httpOptions);
+  }
 
 }

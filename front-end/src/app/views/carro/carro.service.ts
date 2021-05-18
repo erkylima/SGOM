@@ -97,4 +97,7 @@ export class CarroService {
             httpOptions
         );
     }
+    delete(id:string):Observable<string>{
+      return this.http.delete<string>(this.urlCarros+"/"+id, httpOptions);
+    }
 }

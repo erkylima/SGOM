@@ -9,7 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 @Entity
+@Builder
 @Table(name="ms_procedimento")
 public class Procedimento implements Serializable {
     
@@ -18,14 +26,13 @@ public class Procedimento implements Serializable {
     private Long id;
     
     @ManyToOne
-    private TipoServico tipoServico;
+    private TipoServico tiposervico;
     
     @Column(name="ordem")
     private int ordem;
     
     @Column(name="nome")
-    private String nome;
-
+    private String nome;    
     
     public Long getId() {
         return id;
@@ -35,12 +42,12 @@ public class Procedimento implements Serializable {
         this.id = id;
     }   
 
-    public TipoServico getTipoServico() {
-        return tipoServico;
+    public TipoServico getTiposervico() {
+        return tiposervico;
     }
 
-    public void setTipoServico(TipoServico tipoServico) {
-        this.tipoServico = tipoServico;
+    public void setTiposervico(TipoServico tiposervico) {
+        this.tiposervico = tiposervico;
     }
 
     public int getOrdem() {
@@ -64,7 +71,14 @@ public class Procedimento implements Serializable {
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
-    }    
+    }
+
+	public Procedimento(Long id, TipoServico tiposervico, int ordem, String nome) {
+		this.id = id;
+		this.tiposervico = tiposervico;
+		this.ordem = ordem;
+		this.nome = nome;
+	}    
     
     
 }
