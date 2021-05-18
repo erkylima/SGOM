@@ -51,12 +51,11 @@ public class CarroController {
     
     @PostMapping("/add")
     public ResponseEntity<?> adicionarCarro(@Valid @RequestBody CarroForm carroform){
-    	log.info(carroform.getModelo());
     	if (carroform.getPlaca().isEmpty()  && carroform.getModelo().isEmpty()) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Todos os campos precisam ser preenchidos!"),
 					HttpStatus.BAD_REQUEST);
 		}
-    	log.info(carroform.getEmpresa());
+
     	Optional<Empresa> empresa = repositoryEmp.findById(carroform.getEmpresa().getId());
     	    	
     	Carro carro = new Carro(carroform.getId(),empresa.get(),carroform.getModelo(),carroform.getPlaca(), carroform.getAno(), carroform.getMarca());

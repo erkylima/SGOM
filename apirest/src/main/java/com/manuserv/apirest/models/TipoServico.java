@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.NoArgsConstructor;
+
 @Entity
+@NoArgsConstructor
 @Table(name="ms_tipo_servico")
 public class TipoServico implements Serializable {
     
@@ -23,7 +26,14 @@ public class TipoServico implements Serializable {
     private String descricao;
    
     
-    public Long getId() {
+    
+    public TipoServico(Long id, String nome, String descricao) {
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+	}
+
+	public Long getId() {
         return id;
     }
 
