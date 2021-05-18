@@ -1,7 +1,6 @@
 package com.manuserv.apirest.resource;
 
 import com.manuserv.apirest.message.request.EmpresaForm;
-import com.manuserv.apirest.message.request.SignUpForm;
 import com.manuserv.apirest.message.response.ResponseMessage;
 import com.manuserv.apirest.models.Empresa;
 import com.manuserv.apirest.models.Usuario;
@@ -73,8 +72,7 @@ public class EmpresaController {
     @DeleteMapping("/{id}")
     void delete(@PathVariable Long id) {      
     	repository.deleteById(id);
-    }
-    
+    }   
     
     @PutMapping("/{id}")
     public ResponseEntity<?> editEmpresa(@PathVariable Long id, @Valid @RequestBody EmpresaForm empresaform){

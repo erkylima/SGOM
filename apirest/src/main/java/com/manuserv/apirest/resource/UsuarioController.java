@@ -64,48 +64,9 @@ public class UsuarioController {
 //    	return "{\"usuario\":\"" + usuario.getUsername() + "\" ,\n \"token\":\"" + usuario.getToken() + "\"}";
 		
     }
-    
-    @PostMapping("/user")
-    public Principal user(Principal user) {
-      return user;
-    }
-    
-    @GetMapping
-    public List findAll(){
-       return repository.findAll();
-    }    
+}
+
         
-    private String getJWTToken(String username) {
-		String secretKey = "chavedossegredos";
-		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-				.commaSeparatedStringToAuthorityList("ROLE_USER");
-		
-		String token = Jwts
-				.builder()
-				.setId("softtekJWT")
-				.setSubject(username)
-				.claim("authorities",
-						grantedAuthorities.stream()
-								.map(GrantedAuthority::getAuthority)
-								.collect(Collectors.toList()))
-				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 600000))
-				.signWith(SignatureAlgorithm.HS512,
-						secretKey.getBytes()).compact();
-
-		return token;
-	}
-    
-    public String generateToken(Usuario usuario) {
-        Claims claims = Jwts.claims().setSubject(usuario.getUsername());
-        claims.put("userId", usuario.getId() + "");
-        claims.put("role", usuario.getAuthorities());
-
-        return Jwts.builder()
-                .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, secret)
-                .compact();
-    }
     
         
 //@Bean
@@ -128,4 +89,4 @@ public class UsuarioController {
 //                    .forEach(System.out::println);
 //        };
 //    };
-}
+

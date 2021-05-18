@@ -1,6 +1,4 @@
 package com.manuserv.apirest.message.request;
-import java.util.Set;
-
 import javax.validation.constraints.*;
 
 public class SignUpForm {

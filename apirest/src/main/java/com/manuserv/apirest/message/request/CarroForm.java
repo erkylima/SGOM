@@ -1,7 +1,5 @@
 package com.manuserv.apirest.message.request;
 
-import javax.validation.constraints.NotBlank;
-
 import com.manuserv.apirest.models.Empresa;
 
 public class CarroForm {

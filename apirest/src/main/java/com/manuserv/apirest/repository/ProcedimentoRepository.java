@@ -1,6 +1,5 @@
 package com.manuserv.apirest.repository;
 
-import com.manuserv.apirest.models.Carro;
 import com.manuserv.apirest.models.Procedimento;
 
 import java.util.List;

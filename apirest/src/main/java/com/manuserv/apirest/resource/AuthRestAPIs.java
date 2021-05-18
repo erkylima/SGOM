@@ -1,7 +1,4 @@
 package com.manuserv.apirest.resource;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +27,6 @@ import com.manuserv.apirest.repository.EmpresaRepository;
 import com.manuserv.apirest.repository.UsuarioRepository;
 import com.manuserv.apirest.security.jwt.JwtProvider;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @CrossOrigin(origins = "*", maxAge = 3600)

@@ -72,7 +72,7 @@ public class ProcedimentoController {
     }
     
     @DeleteMapping("/{id}")
-    void deleteProcedimento(@PathVariable Long id) {      
+    void delete(@PathVariable Long id) {      
     	repository.deleteById(id);
     }
     

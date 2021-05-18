@@ -1,11 +1,9 @@
 package com.manuserv.apirest.resource;
 
 import com.manuserv.apirest.message.request.CarroForm;
-import com.manuserv.apirest.message.request.EmpresaForm;
 import com.manuserv.apirest.message.response.ResponseMessage;
 import com.manuserv.apirest.models.Carro;
 import com.manuserv.apirest.models.Empresa;
-import com.manuserv.apirest.models.Usuario;
 import com.manuserv.apirest.repository.CarroRepository;
 import com.manuserv.apirest.repository.EmpresaRepository;
 

@@ -1,7 +1,5 @@
 package com.manuserv.apirest.security.services;
 
-import java.util.Optional;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.manuserv.apirest.models.Usuario;
 import com.manuserv.apirest.repository.UsuarioRepository;
-import com.manuserv.apirest.security.services.UserPrinciple;
 import lombok.RequiredArgsConstructor;
 
 

@@ -1,10 +1,8 @@
 package com.manuserv.apirest.resource;
 
 import com.manuserv.apirest.message.request.TipoServicoForm;
-import com.manuserv.apirest.message.request.TipoServicoForm;
 import com.manuserv.apirest.message.response.ResponseMessage;
 import com.manuserv.apirest.models.TipoServico;
-import com.manuserv.apirest.models.Usuario;
 import com.manuserv.apirest.repository.TipoServicoRepository;
 
 import lombok.extern.log4j.Log4j2;
