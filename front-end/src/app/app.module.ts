@@ -1,3 +1,6 @@
+import { EditTipoServicoComponent } from './views/tiposervico/edit-tiposervico/edit-tiposervico.component';
+import { CreateTipoServicoComponent } from './views/tiposervico/create-tiposervico/create-tiposervico.component';
+import { TipoServicoComponent } from './views/tiposervico/tiposervico.component';
 import { CarroComponent } from './views/carro/carro.component';
 import { EditCarroComponent } from './views/carro/edit-empresa/edit-carro.component';
 import { EditEmpresaComponent } from './views/blank/edit-empresa/edit-empresa.component';
@@ -58,7 +61,10 @@ registerLocaleData(localeEn, 'pt-BR');
         EditEmpresaComponent,
         EditCarroComponent,
         CreateCarroComponent,
-        CarroComponent
+        CarroComponent,
+        TipoServicoComponent,
+        CreateTipoServicoComponent,
+        EditTipoServicoComponent
     ],
     imports: [
         BrowserModule,

@@ -1,3 +1,6 @@
+import { EditTipoServicoComponent } from './views/tiposervico/edit-tiposervico/edit-tiposervico.component';
+import { CreateTipoServicoComponent } from './views/tiposervico/create-tiposervico/create-tiposervico.component';
+import { TipoServicoComponent } from './views/tiposervico/tiposervico.component';
 import { EditCarroComponent } from './views/carro/edit-empresa/edit-carro.component';
 import { CarroComponent } from './views/carro/carro.component';
 import { EditEmpresaComponent } from './views/blank/edit-empresa/edit-empresa.component';
@@ -48,6 +51,17 @@ const routes: Routes = [
             },{
               path: 'carro/edit/:id',
               component: EditCarroComponent
+            },
+            {
+              path: 'tiposervico',
+              component: TipoServicoComponent
+            },
+            {
+              path: 'tiposervico/criar',
+              component: CreateTipoServicoComponent
+            },{
+              path: 'tiposervico/edit/:id',
+              component: EditTipoServicoComponent
             },
             {
                 path: '',

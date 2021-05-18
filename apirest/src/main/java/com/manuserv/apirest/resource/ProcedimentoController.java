@@ -2,14 +2,19 @@ package com.manuserv.apirest.resource;
 
 import com.manuserv.apirest.repository.ProcedimentoRepository;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Log4j2
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping({"/procedimentos"})
 public class ProcedimentoController {
     

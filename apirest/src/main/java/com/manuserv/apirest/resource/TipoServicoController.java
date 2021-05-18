@@ -1,12 +1,13 @@
 package com.manuserv.apirest.resource;
 
-import com.manuserv.apirest.message.request.EmpresaForm;
+import com.manuserv.apirest.message.request.TipoServicoForm;
 import com.manuserv.apirest.message.request.TipoServicoForm;
 import com.manuserv.apirest.message.response.ResponseMessage;
-import com.manuserv.apirest.models.Empresa;
 import com.manuserv.apirest.models.TipoServico;
 import com.manuserv.apirest.models.Usuario;
 import com.manuserv.apirest.repository.TipoServicoRepository;
+
+import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +26,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping({"/tipo_servicos"})
+@Log4j2
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping({"/tiposervicos"})
 public class TipoServicoController {
     
     @Autowired
@@ -41,7 +45,7 @@ public class TipoServicoController {
     }    
     
     @PostMapping("/add")
-    public ResponseEntity<?> adicionarEmpresa(@Valid @RequestBody TipoServicoForm tiposervicoform){
+    public ResponseEntity<?> adicionarTipoServico(@Valid @RequestBody TipoServicoForm tiposervicoform){
 
     	if (tiposervicoform.getNome().isEmpty() && tiposervicoform.getDescricao().isEmpty()) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Todos os campos precisam ser preenchidos!"),
@@ -52,7 +56,7 @@ public class TipoServicoController {
     	TipoServico tiposervico = new TipoServico(id,tiposervicoform.getNome(),tiposervicoform.getDescricao());
     	
     	repository.save(tiposervico);
-    	return new ResponseEntity<>(new ResponseMessage("Empresa criada com sucesso!"), HttpStatus.OK);
+    	return new ResponseEntity<>(new ResponseMessage("TipoServico criada com sucesso!"), HttpStatus.OK);
     }
     
     @GetMapping("/{id}")
@@ -62,7 +66,7 @@ public class TipoServicoController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> editEmpresa(@PathVariable Long id, @Valid @RequestBody TipoServicoForm tiposervicoform){
+    public ResponseEntity<?> editTipoServico(@PathVariable Long id, @Valid @RequestBody TipoServicoForm tiposervicoform){
 
     	if (tiposervicoform.getNome().isEmpty() && tiposervicoform.getDescricao().isEmpty()) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Todos os campos precisam ser preenchidos!"),
