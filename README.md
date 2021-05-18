@@ -31,4 +31,4 @@
 
 > Para acessar o sistema acesso o link: localhost:4200
 
-#### Quaisquer dúvidas, por favor, entrar contato com Érky Lima nos contatos: (87) 999380279 (WhatsApp) ou email: erkylima@gmail.com
+#### Quaisquer dúvidas, por favor, entrar contato com Érky Lima no número: (87) 999380279 (WhatsApp) ou email: erkylima@gmail.com
