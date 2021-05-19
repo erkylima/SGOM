@@ -49,7 +49,7 @@
                                 <a routerLink="edit/{{ tiposervico.id }}" class="btn btn-info btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <a class="btn btn-danger btn-sm">
+                                <a (click)="delete(tiposervico.id)" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Apagar
                                 </a>
                             </td>

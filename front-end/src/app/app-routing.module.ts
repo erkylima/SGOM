@@ -77,6 +77,7 @@ const routes: Routes = [
               path: 'procedimento/edit/:id',
               component: EditProcedimentoComponent
             },
+
             {
                 path: '',
                 component: DashboardComponent

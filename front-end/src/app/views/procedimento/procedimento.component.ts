@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {Procedimento} from './procedimento.model';
 import {ProcedimentoService} from './procedimento.service';
@@ -10,6 +11,7 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 })
 export class ProcedimentoComponent implements OnInit {
     constructor(
+        private router: Router,
         private renderer: Renderer2,
         private toastr: ToastrService,
         private procedimentoService: ProcedimentoService
@@ -22,5 +24,21 @@ export class ProcedimentoComponent implements OnInit {
             this.procedimentoList = res;
             console.log(res);
         });
+    }
+
+    delete(id:string){
+      this.procedimentoService.delete(id).subscribe(
+        (data) => {
+          this.toastr.error("Apagando procedimento");
+          this.router.navigate(['/']);
+
+        },
+        (error) => {
+            this.toastr.error(
+                'Informações de acesso incorretas. Tente novamente'
+            );
+            // get the status as error.status
+        }
+        );
     }
 }

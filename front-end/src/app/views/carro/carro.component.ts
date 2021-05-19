@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {Carro} from './carro.model';
 import {CarroService} from './carro.service';
@@ -10,9 +11,10 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 })
 export class CarroComponent implements OnInit {
     constructor(
-        private renderer: Renderer2,
-        private toastr: ToastrService,
-        private carroService: CarroService
+      private router: Router,
+      private renderer: Renderer2,
+      private toastr: ToastrService,
+      private carroService: CarroService
     ) {}
 
     carroList: Carro;
@@ -22,5 +24,21 @@ export class CarroComponent implements OnInit {
             this.carroList = res;
             console.log(res);
         });
+    }
+
+    delete(id:string){
+      this.carroService.delete(id).subscribe(
+        (data) => {
+          this.toastr.error("Apagando carro");
+          this.router.navigate(['/']);
+
+        },
+        (error) => {
+            this.toastr.error(
+                'Informações de acesso incorretas. Tente novamente'
+            );
+            // get the status as error.status
+        }
+        );
     }
 }
