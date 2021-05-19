@@ -50,13 +50,10 @@
                             <td>{{ carro.placa }}</td>
                             <td>{{ carro.marca }}</td>
                             <td>
-                                <a
-                                    routerLink="edit/{{ carro.id }}"
-                                    class="btn btn-info btn-sm"
-                                >
+                                <a routerLink="edit/{{ carro.id }}" class="btn btn-info btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <a class="btn btn-danger btn-sm">
+                                <a (click)="delete(carro.id)" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Apagar
                                 </a>
                             </td>
