@@ -60,7 +60,6 @@ public class ProcedimentoController {
     	Long id = new Long(0);
     	Optional<TipoServico> tiposervico = repositoryTipo.findById(procedimentoform.getTiposervico().getId());
     	Procedimento procedimento = new Procedimento(id, tiposervico.get(), procedimentoform.getOrdem(), procedimentoform.getNome());
-    	
     	repository.save(procedimento);
     	return new ResponseEntity<>(new ResponseMessage("Procedimento criada com sucesso!"), HttpStatus.OK);
     }

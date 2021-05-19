@@ -42,7 +42,9 @@ export class CreateProcedimentoComponent implements OnInit {
         if (this.criarProcedimentoForm.valid) {
             this.isAuthLoading = true;
             this.tiposervico.id = this.criarProcedimentoForm.value.tiposervico;
+
             this.criarProcedimentoForm.value.tiposervico = this.tiposervico;
+
             this.procedimentoService.adicionarEditarProcedimento(this.criarProcedimentoForm.value);
             this.isAuthLoading = false;
         } else {
