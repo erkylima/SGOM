@@ -32,7 +32,10 @@ export class EditCarroComponent implements OnInit {
             this.empresa = new Empresa(
                 res.empresa.id,
                 res.empresa.nome,
-                res.empresa.cnpj
+                res.empresa.cnpj,
+                null,
+                null,
+                null
             );
             this.carro = new Carro(
                 res.id,

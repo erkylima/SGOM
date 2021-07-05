@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Empresa Page</h1>
+                <h1>TipoServico Page</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -22,11 +22,14 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Adicionar Empresa</h3>
+                <h3 class="card-title">Adicionar TipoServico</h3>
             </div>
-            <div class="card-body">
+            <div *ngIf="tiposervico" class="card-body">
                 <div class="container-fluid">
-                    <form [formGroup]="criarEmpresaForm" (ngSubmit)="save()">
+                    <form
+                        [formGroup]="editTipoServicoForm"
+                        (ngSubmit)="update()"
+                    >
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -34,6 +37,7 @@
                                     <input
                                         type="text"
                                         formControlName="nome"
+                                        [(ngModel)]="tiposervico.nome"
                                         id="nome"
                                         class="form-control"
                                     />
@@ -44,47 +48,9 @@
                                     <label for="inputClientCompany">CNPJ</label>
                                     <input
                                         type="text"
-                                        formControlName="cnpj"
-                                        id="cnpj"
-                                        class="form-control"
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="inputClientCompany"
-                                        >Email</label
-                                    >
-                                    <input
-                                        type="text"
-                                        formControlName="email"
-                                        id="email"
-                                        class="form-control"
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="inputClientCompany"
-                                        >Usuario</label
-                                    >
-                                    <input
-                                        type="text"
-                                        formControlName="usuario"
-                                        id="usuario"
-                                        class="form-control"
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="inputClientCompany"
-                                        >Senha</label
-                                    >
-                                    <input
-                                        type="password"
-                                        formControlName="senha"
-                                        id="senha"
+                                        formControlName="descricao"
+                                        id="descricao"
+                                        [(ngModel)]="tiposervico.descricao"
                                         class="form-control"
                                     />
                                 </div>
@@ -94,7 +60,7 @@
                             <app-button
                                 [type]="'submit'"
                                 [block]="true"
-                                [text]="'Entrar'"
+                                [text]="'Atualizar'"
                                 [loading]="isAuthLoading"
                             ></app-button>
                         </div>

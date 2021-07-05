@@ -15,6 +15,7 @@ import {AppService} from 'src/app/utils/services/app.service';
 })
 export class UserDropdownMenuComponent implements OnInit {
     public user;
+    nome = localStorage.getItem('nome');
 
     @ViewChild('dropdownMenu', {static: false}) dropdownMenu;
     @HostListener('document:click', ['$event'])

@@ -8,31 +8,10 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a [routerLink]="['/']" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a [routerLink]="['/blank']" class="nav-link">Contact</a>
-        </li>
     </ul>
 
-    <form class="form-inline ml-3" [formGroup]="searchForm">
-        <div class="input-group input-group-sm">
-            <input
-                class="form-control form-control-navbar"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-            />
-            <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-    </form>
-
     <ul class="navbar-nav ml-auto">
-        <app-messages-dropdown-menu></app-messages-dropdown-menu>
-        <app-notifications-dropdown-menu></app-notifications-dropdown-menu>
-        <app-language-dropdown></app-language-dropdown>
+        Usuario
         <app-user-dropdown-menu></app-user-dropdown-menu>
         <!-- <li class="nav-item">
       <a

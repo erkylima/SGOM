@@ -9,13 +9,20 @@ import com.manuserv.apirest.repository.UsuarioRepository;
 
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +45,9 @@ public class EmpresaController {
    @Autowired
    private UsuarioRepository repositoryUsuario;
 
-
+   	@Autowired
+	PasswordEncoder encoder;
+   
     public EmpresaController(EmpresaRepository repository) {
         this.repository = repository;
     }
@@ -56,17 +65,44 @@ public class EmpresaController {
 					HttpStatus.BAD_REQUEST);
 		}
     	
+    	
     	Long id = new Long(0);
     	Empresa empresa = new Empresa(id,empresaform.getNome(),empresaform.getCnpj());
+    	    
+    	Empresa emp_criada = repository.save(empresa);
     	
-    	repository.save(empresa);
+    	Usuario usuario = new Usuario(emp_criada,empresaform.getNome(),empresaform.getUsuario(),empresaform.getSenha(),empresaform.getEmail(),"ROLE_OFICINA");
+    	repositoryUsuario.save(usuario);
+    	
     	return new ResponseEntity<>(new ResponseMessage("Empresa criada com sucesso!"), HttpStatus.OK);
     }
     
     @GetMapping("/{id}")
     Empresa getEmpresa(@PathVariable Long id) {
-      
-      return repository.findById(id).get();
+
+    	Usuario usuario = repositoryUsuario.findByEmpresaId(id);
+    	log.info("Meu nome é: " + usuario.getNome());
+    	
+    	return repository.findById(id).get();
+    }
+    
+    @GetMapping("/{id}/user")
+    Usuario getUsuarioEmpresa(@PathVariable Long id) {
+
+    	Usuario usuario = repositoryUsuario.findByEmpresaId(id);
+    	log.info("Meu nome é: " + usuario.getNome());
+    	
+    	return usuario;
+    }
+
+    @GetMapping("/{authorities}/userRole")
+    List<Usuario> getUsuarioEmpresaRole(@PathVariable String authorities) {
+    	
+    	List<Usuario> usuario = repositoryUsuario.findByAuthorities(authorities);
+    	for (Usuario usuario2 : usuario) {
+			log.info("MEU NOMINHO: " + usuario2.getNome());
+		}
+    	return usuario;
     }
     
     @DeleteMapping("/{id}")

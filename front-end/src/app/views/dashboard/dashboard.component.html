@@ -24,34 +24,36 @@
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row justify-content-center">
-            <div class="col-lg-3 col-6">
+            <div *ngIf="roleUser()" class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{ncarros.length}}</h3>
+                        <h3>{{ ncarros.length }}</h3>
 
                         <p>Carros Cadastrados</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-car"></i>
                     </div>
-                    <a routerLink="/carro" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i
+                    <a routerLink="/carro" class="small-box-footer"
+                        >Ver mais <i class="fas fa-arrow-circle-right"></i
                     ></a>
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div *ngIf="roleAdmin()" class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>{{nempresas.length}}</h3>
+                        <h3>{{ nempresas.length }}</h3>
 
                         <p>Empresas Cadastradas</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a routerLink="/empresa" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i
+                    <a routerLink="/empresa" class="small-box-footer"
+                        >Ver mais <i class="fas fa-arrow-circle-right"></i
                     ></a>
                 </div>
             </div>

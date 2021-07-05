@@ -45,9 +45,11 @@ export class AppService {
                         const token = data['accessToken'];
                         const nome = data['nome'];
                         const empresa_id = data['empresaId'];
-                        this.toastr.success('Boa, garot@!');
+                        const role = data['authorities'][0]['authority'];
+                        this.toastr.success('Boa, garot@!' + role);
                         localStorage.setItem('token', token);
                         localStorage.setItem('nome', nome);
+                        localStorage.setItem('role', role);
                         localStorage.setItem('empresa_id', empresa_id);
                         console.log('token: ' + token);
                         this.router.navigate(['/']);

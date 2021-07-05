@@ -28,23 +28,66 @@
                 <div class="container-fluid">
                     <form [formGroup]="editEmpresaForm" (ngSubmit)="update()">
                         <div class="row">
-
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="inputName">Nome</label>
-                                    <input type="text" formControlName="nome" [(ngModel)]="empresa.nome" id="nome" class="form-control">
+                                    <input
+                                        type="text"
+                                        formControlName="nome"
+                                        [(ngModel)]="empresa.nome"
+                                        id="nome"
+                                        class="form-control"
+                                    />
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="inputClientCompany">CNPJ</label>
-                                    <input type="text" formControlName="cnpj" id="cnpj" [(ngModel)]="empresa.cnpj" class="form-control">
+                                    <input
+                                        type="text"
+                                        formControlName="cnpj"
+                                        id="cnpj"
+                                        [(ngModel)]="empresa.cnpj"
+                                        class="form-control"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="inputClientCompany"
+                                        >Email</label
+                                    >
+                                    <input
+                                        type="text"
+                                        formControlName="email"
+                                        value="{{ usuario.email }}"
+                                        id="email"
+                                        class="form-control"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="inputClientCompany"
+                                        >Usuario</label
+                                    >
+                                    <input
+                                        type="text"
+                                        formControlName="usuario"
+                                        value="{{ usuario.username }}"
+                                        id="usuario"
+                                        class="form-control"
+                                    />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <app-button [type]="'submit'" [block]="true" [text]="'Atualizar'" [loading]="isAuthLoading"></app-button>
-
+                            <app-button
+                                [type]="'submit'"
+                                [block]="true"
+                                [text]="'Atualizar'"
+                                [loading]="isAuthLoading"
+                            ></app-button>
                         </div>
                     </form>
                 </div>
