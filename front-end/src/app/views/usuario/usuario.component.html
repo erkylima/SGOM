@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Procedimento Page</h1>
+                <h1>Empresa Page</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Procedimento Page</li>
+                    <li class="breadcrumb-item active">Empresa Page</li>
                 </ol>
             </div>
         </div>
@@ -22,21 +22,13 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Lista de Procedimentos</h3>
+                <h3 class="card-title">Lista de Empresas</h3>
 
-                <div *ngIf="roleAdmin()" class="card-tools">
-                    <a routerLink="../../../tiposervico" class="btn btn-danger">
-                        <i class="fas fa-back"></i> Voltar
-                    </a>
-                </div>
-
-                <div *ngIf="!roleAdmin()" class="card-tools">
-                    <a routerLink="../../carro" class="btn btn-danger">
-                        <i class="fas fa-back"></i> Voltar
-                    </a>
-                </div>
                 <div class="card-tools">
-                    <a *ngIf="roleAdmin()" [routerLink]="['/procedimento/criar/'+tiposervico_id]" class="btn btn-success">
+                    <a
+                        [routerLink]="['/empresa/criar']"
+                        class="btn btn-success"
+                    >
                         <i class="fas fa-plus"></i> Criar
                     </a>
                 </div>
@@ -45,21 +37,28 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th style="width: 10px">#ID</th>
                             <th>Nome</th>
-                            <th>Ordem de execução</th>
-                            <th *ngIf="roleAdmin()">Ação</th>
+                            <th>CNPJ</th>
+                            <th style="width: 220px">Label</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let procedimento of procedimentoList">
-
-                            <td>{{ procedimento.nome }}</td>
-                            <td>{{ procedimento.ordem }}</td>
-                            <td *ngIf="roleAdmin()">
-                                <a routerLink="../../edit/{{ procedimento.id }}" class="btn btn-info btn-sm">
+                        <tr *ngFor="let empresa of empresaList">
+                            <td>{{ empresa.id }}</td>
+                            <td>{{ empresa.nome }}</td>
+                            <td>{{ empresa.cnpj }}</td>
+                            <td>
+                                <a
+                                    routerLink="edit/{{ empresa.id }}"
+                                    class="btn btn-info btn-sm"
+                                >
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <a (click)="delete(procedimento.id)" class="btn btn-danger btn-sm">
+                                <a
+                                    (click)="delete(empresa.id)"
+                                    class="btn btn-danger btn-sm"
+                                >
                                     <i class="fas fa-trash-alt"></i> Apagar
                                 </a>
                             </td>

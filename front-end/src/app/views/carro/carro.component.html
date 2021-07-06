@@ -56,6 +56,9 @@
                                 <a (click)="delete(carro.id)" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Apagar
                                 </a>
+                                <a routerLink="../triagem/{{ carro.id }}" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Serviços Realizados
+                                </a>
                             </td>
                         </tr>
                     </tbody>

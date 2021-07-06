@@ -34,16 +34,16 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th style="width: 10px">#ID</th>
+
                             <th>Nome</th>
-                            <th>CNPJ</th>
-                            <th style="width: 220px">Label</th>
+                            <th>Descrição</th>
+                            <th style="width: 220px">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let tiposervico of tiposervicoList">
-                            <td>{{ tiposervico.id }}</td>
-                            <td>{{ tiposervico.nome }}</td>
+
+                            <td><a routerLink="/procedimento/list/{{ tiposervico.id }}">{{ tiposervico.nome }}</a></td>
                             <td>{{ tiposervico.descricao }}</td>
                             <td>
                                 <a routerLink="edit/{{ tiposervico.id }}" class="btn btn-info btn-sm">

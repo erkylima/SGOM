@@ -4,6 +4,7 @@ import {FormGroup, Validators, FormControl} from '@angular/forms';
 import {ProcedimentoService} from '../procedimento.service';
 import {Procedimento} from '../procedimento.model';
 import {Component, OnInit, Renderer2} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-create-procedimento',
@@ -14,17 +15,20 @@ export class CreateProcedimentoComponent implements OnInit {
     id: string;
     procedimento: Procedimento;
     tiposervico: TipoServico;
-
+    tiposervico_id:number
     public criarProcedimentoForm: FormGroup;
     public isAuthLoading = false;
 
     constructor(
         private renderer: Renderer2,
         private toastr: ToastrService,
-        private procedimentoService: ProcedimentoService
+        private procedimentoService: ProcedimentoService,
+        private route: ActivatedRoute,
     ) {}
 
     ngOnInit(): void {
+        this.tiposervico_id = Number(this.route.snapshot.paramMap.get('tiposervico'));
+
         this.tiposervico = new TipoServico(
             null,
             null,
@@ -41,7 +45,7 @@ export class CreateProcedimentoComponent implements OnInit {
     save() {
         if (this.criarProcedimentoForm.valid) {
             this.isAuthLoading = true;
-            this.tiposervico.id = this.criarProcedimentoForm.value.tiposervico;
+            this.tiposervico.id = this.tiposervico_id;
 
             this.criarProcedimentoForm.value.tiposervico = this.tiposervico;
 

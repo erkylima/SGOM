@@ -21,6 +21,9 @@ import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.c
 import {RecoverPasswordComponent} from './pages/recover-password/recover-password.component';
 import { CreateCarroComponent } from './views/carro/create-empresa/create-carro.component';
 import { CreateProcedimentoComponent } from './views/procedimento/create-procedimento/create-procedimento.component';
+import { TriagemComponent } from './views/triagem/triagem.component';
+import { CreateTriagemComponent } from './views/triagem/create-triagem/create-triagem.component';
+import { EditTriagemComponent } from './views/triagem/edit-triagem/edit-triagem.component';
 
 const routes: Routes = [
     {
@@ -67,11 +70,11 @@ const routes: Routes = [
               component: EditTipoServicoComponent
             },
             {
-              path: 'procedimento',
+              path: 'procedimento/list/:tiposervico',
               component: ProcedimentoComponent
             },
             {
-              path: 'procedimento/criar',
+              path: 'procedimento/criar/:tiposervico',
               component: CreateProcedimentoComponent
             },{
               path: 'procedimento/edit/:id',
@@ -81,6 +84,17 @@ const routes: Routes = [
             {
                 path: '',
                 component: DashboardComponent
+            },
+            {
+              path: 'triagem/:carro',
+              component: TriagemComponent
+            },
+            {
+              path: 'triagem/:carro/criar',
+              component: CreateTriagemComponent
+            },{
+              path: 'triagem/:carro/edit/:id',
+              component: EditTriagemComponent
             }
         ]
     },

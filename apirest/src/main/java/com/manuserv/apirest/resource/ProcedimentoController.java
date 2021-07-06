@@ -46,7 +46,7 @@ public class ProcedimentoController {
          
     @GetMapping("/{tiposervico_id}/list")
     public List<?> findPorTipoServico(@PathVariable Long tiposervico_id){
-       return repository.findByTiposervicoId(tiposervico_id);
+       return repository.findByTiposervicoIdOrderByOrdemAsc(tiposervico_id);
     }
     
     @PostMapping("/add")
@@ -87,7 +87,7 @@ public class ProcedimentoController {
     	procedimento.setOrdem(procedimentoform.getOrdem());
     	repository.save(procedimento);
     	return new ResponseEntity<>(new ResponseMessage("Procedimento editada com sucesso!"), HttpStatus.OK);
-    }    
+    }
     
 //@Bean
 //    CommandLineRunner init(UsuarioRepository repository) {

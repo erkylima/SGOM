@@ -38,6 +38,9 @@ import {RecoverPasswordComponent} from './pages/recover-password/recover-passwor
 import {LanguageDropdownComponent} from './pages/main/header/language-dropdown/language-dropdown.component';
 import { CreateCarroComponent } from './views/carro/create-empresa/create-carro.component';
 import { CreateProcedimentoComponent } from './views/procedimento/create-procedimento/create-procedimento.component';
+import { CreateTriagemComponent } from './views/triagem/create-triagem/create-triagem.component';
+import { EditTriagemComponent } from './views/triagem/edit-triagem/edit-triagem.component';
+import { TriagemComponent } from './views/triagem/triagem.component';
 
 registerLocaleData(localeEn, 'pt-BR');
 
@@ -70,7 +73,10 @@ registerLocaleData(localeEn, 'pt-BR');
         EditTipoServicoComponent,
         ProcedimentoComponent,
         CreateProcedimentoComponent,
-        EditProcedimentoComponent
+        EditProcedimentoComponent,
+        CreateTriagemComponent,
+        EditTriagemComponent,
+        TriagemComponent,
     ],
     imports: [
         BrowserModule,

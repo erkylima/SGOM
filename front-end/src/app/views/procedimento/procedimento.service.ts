@@ -59,7 +59,7 @@ export class ProcedimentoService {
                 (data) => {
                     this.toastr.success('Procedimento atualizada com sucesso!');
 
-                    this.router.navigate(['/procedimento']);
+                    this.router.navigate(['/procedimento/list/'+tiposervico.id]);
                 },
                 (error) => {
                     this.toastr.error(
@@ -73,9 +73,9 @@ export class ProcedimentoService {
         }
     }
 
-    getProcedimentos(): Observable<Procedimento> {
+    getProcedimentos(tiposervico:string): Observable<Procedimento> {
         return this.http.get<Procedimento>(
-            this.urlProcedimentos + '/' + 1 + '/list',
+            this.urlProcedimentos + '/' + tiposervico + '/list',
             httpOptions
         );
     }

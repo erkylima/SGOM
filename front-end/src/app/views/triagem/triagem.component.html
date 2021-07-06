@@ -22,13 +22,15 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Lista de Triagem</h3>
+                <h3 class="card-title">Lista de Serviços</h3>
+                <div class="card-tools">
+                    <a routerLink="../../carro/" class="btn btn-danger">
+                        <i class="fas fa-back"></i> Voltar
+                    </a>
+                </div>
 
                 <div class="card-tools">
-                    <a
-                        [routerLink]="['/triagem/criar']"
-                        class="btn btn-success"
-                    >
+                    <a routerLink="criar" class="btn btn-success">
                         <i class="fas fa-plus"></i> Criar
                     </a>
                 </div>
@@ -38,27 +40,26 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">#ID</th>
-                            <th>Nome</th>
-                            <th>CNPJ</th>
+                            <th>Tipo de Serviço</th>
+                            <th>Carro</th>
+                            <th>Placa</th>
+                            <th>Preço</th>
                             <th style="width: 220px">Label</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let triagem of triagemList">
                             <td>{{ triagem.id }}</td>
-                            <td>{{ triagem.nome }}</td>
-                            <td>{{ triagem.descricao }}</td>
+                            <td><a routerLink="../../procedimento/list/{{ triagem.tipoServico.id }}">{{
+                                    triagem.tipoServico.nome }}</a></td>
+                            <td>{{ triagem.carro.modelo }}</td>
+                            <td>{{ triagem.carro.placa }}</td>
+                            <td>R${{ triagem.preco }}</td>
                             <td>
-                                <a
-                                    routerLink="edit/{{ triagem.id }}"
-                                    class="btn btn-info btn-sm"
-                                >
+                                <a routerLink="edit/{{ triagem.id }}" class="btn btn-info btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <a
-                                    (click)="delete(triagem.id)"
-                                    class="btn btn-danger btn-sm"
-                                >
+                                <a (click)="delete(triagem.id)" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Apagar
                                 </a>
                             </td>

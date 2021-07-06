@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProcedimentoRepository extends JpaRepository<Procedimento, Long>{
     
-	List<Procedimento> findByTiposervicoId(Long id);
-	
+	List<Procedimento> findByTiposervicoIdOrderByOrdemDesc(Long id);
+	List<Procedimento> findByTiposervicoIdOrderByOrdemAsc(Long id);
+
 }

@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>TipoServico Page</h1>
+                <h1>Triagem Page</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -22,47 +22,22 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Adicionar TipoServico</h3>
+                <h3 class="card-title">Adicionar Triagem</h3>
             </div>
-            <div *ngIf="tiposervico" class="card-body">
+            <div *ngIf="triagem" class="card-body">
                 <div class="container-fluid">
-                    <form
-                        [formGroup]="editTipoServicoForm"
-                        (ngSubmit)="update()"
-                    >
-                        <div class="row">
+                    <form [formGroup]="editTriagemForm" (ngSubmit)="update()">
+                        <div class="row">                            
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="inputName">Nome</label>
-                                    <input
-                                        type="text"
-                                        formControlName="nome"
-                                        [(ngModel)]="tiposervico.nome"
-                                        id="nome"
-                                        class="form-control"
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="inputClientCompany">CNPJ</label>
-                                    <input
-                                        type="text"
-                                        formControlName="descricao"
-                                        id="descricao"
-                                        [(ngModel)]="tiposervico.descricao"
-                                        class="form-control"
-                                    />
+                                    <label for="inputClientCompany">Preço</label>
+                                    <input type="number" formControlName="preco" id="preco" [(ngModel)]="triagem.preco" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <app-button
-                                [type]="'submit'"
-                                [block]="true"
-                                [text]="'Atualizar'"
-                                [loading]="isAuthLoading"
-                            ></app-button>
+                            <app-button [type]="'submit'" [block]="true" [text]="'Atualizar'" [loading]="isAuthLoading"></app-button>
+
                         </div>
                     </form>
                 </div>

@@ -22,7 +22,6 @@ export class CarroComponent implements OnInit {
     ngOnInit() {
         this.carroService.getCarros().subscribe((res) => {
             this.carroList = res;
-            console.log(res);
         });
     }
 

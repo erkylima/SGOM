@@ -30,36 +30,30 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="inputName">Nome</label>
-                                    <input
-                                        type="text"
-                                        formControlName="nome"
-                                        id="nome"
-                                        class="form-control"
-                                    />
+                                    <label for="id_tiposervico">Serviço</label>
+                                    <select class="form-control" formControlName="id_tiposervico" name="id_tiposervico" id="id_tiposervico">
+                                        <option *ngFor="let tiposerv of tiposervicoList" [value]="tiposerv.id">
+                                            {{tiposerv.nome}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="inputClientCompany"
-                                        >Descrição</label
-                                    >
-                                    <input
-                                        type="text"
-                                        formControlName="descricao"
-                                        id="descricao"
-                                        class="form-control"
-                                    />
+                                    <label for="preco">Preço</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                R$
+                                            </span>
+                                        </div>
+                                        <input formControlName="preco" name="preco" id="preco" type="text" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <app-button
-                                [type]="'submit'"
-                                [block]="true"
-                                [text]="'Entrar'"
-                                [loading]="isAuthLoading"
-                            ></app-button>
+                            <app-button [type]="'submit'" [block]="true" [text]="'Salvar'" [loading]="isAuthLoading">
+                            </app-button>
                         </div>
                     </form>
                 </div>
