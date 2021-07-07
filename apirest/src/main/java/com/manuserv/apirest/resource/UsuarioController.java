@@ -39,6 +39,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +51,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Log4j2
 @RequestMapping({ "/usuarios" })
 public class UsuarioController {
@@ -60,6 +61,9 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository repository;
+
+	@Autowired
+	PasswordEncoder encoder;
 
 	public UsuarioController(UsuarioRepository repository) {
 		this.repository = repository;
@@ -78,23 +82,35 @@ public class UsuarioController {
 
 	}
 
-	@GetMapping("/{empresa_id}/list")
+	@GetMapping("/list/{empresa_id}")
 	public List<?> findPorEmpresa(@PathVariable Long empresa_id) {
 		return (List<?>) repository.findByEmpresaId(empresa_id);
 	}
 
+	@GetMapping("/rolelist/{regra}")
+	public List<?> findPorRegra(@PathVariable String regra) {
+		return (List<?>) repository.findByAuthorities(regra);
+	}
+
 	@PostMapping("/add")
 	public ResponseEntity<?> adicionarUsuario(@Valid @RequestBody UsuarioForm usuarioform) {
+		log.info(usuarioform);
 		if (usuarioform.getEmpresa().getId().toString().equals("0") && usuarioform.getEmail().isEmpty()) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Todos os campos precisam ser preenchidos!"),
 					HttpStatus.BAD_REQUEST);
 		}
-
+		
 		Long id = new Long(0);
-
+		log.info("chegando");
 		Empresa empresa = new Empresa(usuarioform.getEmpresa().getId(), null, null);
-		Usuario usuario = new Usuario(null, usuarioform.getNome(), usuarioform.getUsername(), usuarioform.getPassword(),
-				usuarioform.getEmail(), usuarioform.getAuthorities());
+		String authority;
+		if (usuarioform.getEmpresa().getId() != 1) { 
+			authority = "ROLE_USER";
+		} else {
+			authority = "ROLE_ADMIN";
+		}
+		Usuario usuario = new Usuario(usuarioform.getEmpresa(), usuarioform.getNome(), usuarioform.getUsername(), encoder.encode(usuarioform.getPassword()),
+				usuarioform.getEmail(), authority);
 
 		repository.save(usuario);
 		return new ResponseEntity<>(new ResponseMessage("Usuario criado com sucesso!"), HttpStatus.OK);
@@ -112,7 +128,7 @@ public class UsuarioController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<?> editServico(@PathVariable Long id, @Valid @RequestBody UsuarioForm usuarioform) {
-		if (usuarioform.getEmpresa().getId().toString().equals("0") && usuarioform.getEmail().isEmpty()) {
+		if (usuarioform.getEmail().isEmpty() && usuarioform.getNome().isEmpty() && usuarioform.getUsername().isEmpty()) {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Todos os campos precisam ser preenchidos!"),
 					HttpStatus.BAD_REQUEST);
 		}
@@ -120,9 +136,8 @@ public class UsuarioController {
 		Usuario usuario = repository.findById(usuarioform.getId()).get();
 		usuario.setNome(usuarioform.getNome());
 		usuario.setUsername(usuario.getUsername());
-		usuario.setPassword(usuarioform.getPassword());
 		usuario.setEmail(usuarioform.getEmail());
-		
+
 		repository.save(usuario);
 		return new ResponseEntity<>(new ResponseMessage("Procedimento editada com sucesso!"), HttpStatus.OK);
 	}

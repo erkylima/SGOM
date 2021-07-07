@@ -44,13 +44,13 @@ public class Usuario implements UserDetails {
     @Column(name="nome")
     private String nome;
     
-    @Column(name="usuario")
+    @Column(name="usuario", unique = true)  
     private String username;
     
     @Column(name="senha")
     private String password;
     
-    @Column(name="email")
+    @Column(name="email", unique = true)
     private String email;
 
     @Column(name="authorities")
@@ -65,7 +65,9 @@ public class Usuario implements UserDetails {
 		this.password = password;
 		this.email = email;
 		this.authorities = authorities;
-	}    
+	}
+	
+	
     
     
     public Long getId() {
@@ -147,9 +149,6 @@ public class Usuario implements UserDetails {
 	@Override
 	public String toString() {
 		return "Usuario [username=" + username + "]";
-	}
-
-
-	
+	}	
     
 }

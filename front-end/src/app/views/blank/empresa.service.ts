@@ -58,16 +58,9 @@ export class EmpresaService {
         }
     }
 
-    async update({id, nome, cnpj, usuario, email, senha}) {
+    async update({id, nome, cnpj}) {
         try {
-            this.empresaInfo = new Empresa(
-                id,
-                nome,
-                cnpj,
-                usuario,
-                email,
-                senha
-            );
+            this.empresaInfo = new Empresa(id, nome, cnpj, null, null, null);
             console.log(this.empresaInfo);
 
             await this.updateEmpresaFunction(id, this.empresaInfo).subscribe(
@@ -108,10 +101,7 @@ export class EmpresaService {
         return this.http.get<Empresa>(this.urlEmpresas + '/list', httpOptions);
     }
     getEmpresaFunction(id: string): Observable<Usuario> {
-        return this.http.get<Usuario>(
-            this.urlEmpresas + '/' + id + '/user',
-            httpOptions
-        );
+        return this.http.get<Usuario>(this.urlEmpresas + '/' + id, httpOptions);
     }
     updateEmpresaFunction(id: string, info: Empresa): Observable<Empresa> {
         return this.http.put<Empresa>(

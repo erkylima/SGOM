@@ -53,25 +53,36 @@
                         <p>Empresas</p>
                     </a>
                 </li>
-                <li *ngIf="roleUser();" class="nav-item">
+                <li *ngIf="roleUser()" class="nav-item">
                     <a [routerLink]="['/carro']" class="nav-link">
                         <i class="nav-icon fas fa-car"></i>
                         <p>Carros</p>
                     </a>
                 </li>
-                <li *ngIf="roleOficina();" class="nav-item">
+                <li *ngIf="roleOficina()" class="nav-item">
+                    <a [routerLink]="['/usuario']" class="nav-link">
+                        <i class="nav-icon fas fa-tools"></i>
+                        <p>Mecanicos</p>
+                    </a>
+                </li>
+                <li *ngIf="roleOficina()" class="nav-item">
                     <a [routerLink]="['/carro']" class="nav-link">
                         <i class="nav-icon fas fa-car"></i>
                         <p>Carros</p>
                     </a>
-                </li>                
+                </li>
                 <li *ngIf="roleAdmin()" class="nav-item">
                     <a [routerLink]="['/tiposervico']" class="nav-link">
                         <i class="nav-icon fas fa-tools"></i>
                         <p>Tipos de Serviços</p>
                     </a>
                 </li>
-            
+                <li *ngIf="roleAdmin()" class="nav-item">
+                    <a [routerLink]="['/usuario']" class="nav-link">
+                        <i class="nav-icon fas fa-tools"></i>
+                        <p>Administrador</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

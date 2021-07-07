@@ -1,12 +1,12 @@
-import { EditProcedimentoComponent } from './views/procedimento/edit-procedimento/edit-procedimento.component';
-import { ProcedimentoComponent } from './views/procedimento/procedimento.component';
-import { EditTipoServicoComponent } from './views/tiposervico/edit-tiposervico/edit-tiposervico.component';
-import { CreateTipoServicoComponent } from './views/tiposervico/create-tiposervico/create-tiposervico.component';
-import { TipoServicoComponent } from './views/tiposervico/tiposervico.component';
-import { EditCarroComponent } from './views/carro/edit-empresa/edit-carro.component';
-import { CarroComponent } from './views/carro/carro.component';
-import { EditEmpresaComponent } from './views/blank/edit-empresa/edit-empresa.component';
-import { CreateEmpresaComponent } from './views/blank/create-empresa/create-empresa.component';
+import {EditProcedimentoComponent} from './views/procedimento/edit-procedimento/edit-procedimento.component';
+import {ProcedimentoComponent} from './views/procedimento/procedimento.component';
+import {EditTipoServicoComponent} from './views/tiposervico/edit-tiposervico/edit-tiposervico.component';
+import {CreateTipoServicoComponent} from './views/tiposervico/create-tiposervico/create-tiposervico.component';
+import {TipoServicoComponent} from './views/tiposervico/tiposervico.component';
+import {EditCarroComponent} from './views/carro/edit-empresa/edit-carro.component';
+import {CarroComponent} from './views/carro/carro.component';
+import {EditEmpresaComponent} from './views/blank/edit-empresa/edit-empresa.component';
+import {CreateEmpresaComponent} from './views/blank/create-empresa/create-empresa.component';
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MainComponent} from './pages/main/main.component';
@@ -19,14 +19,14 @@ import {AuthGuard} from './utils/guards/auth.guard';
 import {NonAuthGuard} from './utils/guards/non-auth.guard';
 import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {RecoverPasswordComponent} from './pages/recover-password/recover-password.component';
-import { CreateCarroComponent } from './views/carro/create-empresa/create-carro.component';
-import { CreateProcedimentoComponent } from './views/procedimento/create-procedimento/create-procedimento.component';
-import { TriagemComponent } from './views/triagem/triagem.component';
-import { CreateTriagemComponent } from './views/triagem/create-triagem/create-triagem.component';
-import { EditTriagemComponent } from './views/triagem/edit-triagem/edit-triagem.component';
-import { UsuarioComponent } from './views/usuario/usuario.component';
-import { CreateUsuarioComponent } from './views/usuario/create-usuario/create-usuario.component';
-import { EditUsuarioComponent } from './views/usuario/edit-usuario/edit-usuario.component';
+import {CreateCarroComponent} from './views/carro/create-empresa/create-carro.component';
+import {CreateProcedimentoComponent} from './views/procedimento/create-procedimento/create-procedimento.component';
+import {TriagemComponent} from './views/triagem/triagem.component';
+import {CreateTriagemComponent} from './views/triagem/create-triagem/create-triagem.component';
+import {EditTriagemComponent} from './views/triagem/edit-triagem/edit-triagem.component';
+import {UsuarioComponent} from './views/usuario/usuario.component';
+import {CreateUsuarioComponent} from './views/usuario/create-usuario/create-usuario.component';
+import {EditUsuarioComponent} from './views/usuario/edit-usuario/edit-usuario.component';
 
 const routes: Routes = [
     {
@@ -44,44 +44,48 @@ const routes: Routes = [
                 component: BlankComponent
             },
             {
-              path: 'empresa/criar',
-              component: CreateEmpresaComponent
-            },{
-              path: 'empresa/edit/:id',
-              component: EditEmpresaComponent
+                path: 'empresa/criar',
+                component: CreateEmpresaComponent
             },
             {
-              path: 'carro',
-              component: CarroComponent
+                path: 'empresa/edit/:id',
+                component: EditEmpresaComponent
             },
             {
-              path: 'carro/criar',
-              component: CreateCarroComponent
-            },{
-              path: 'carro/edit/:id',
-              component: EditCarroComponent
+                path: 'carro',
+                component: CarroComponent
             },
             {
-              path: 'tiposervico',
-              component: TipoServicoComponent
+                path: 'carro/criar',
+                component: CreateCarroComponent
             },
             {
-              path: 'tiposervico/criar',
-              component: CreateTipoServicoComponent
-            },{
-              path: 'tiposervico/edit/:id',
-              component: EditTipoServicoComponent
+                path: 'carro/edit/:id',
+                component: EditCarroComponent
             },
             {
-              path: 'procedimento/list/:tiposervico',
-              component: ProcedimentoComponent
+                path: 'tiposervico',
+                component: TipoServicoComponent
             },
             {
-              path: 'procedimento/criar/:tiposervico',
-              component: CreateProcedimentoComponent
-            },{
-              path: 'procedimento/edit/:id',
-              component: EditProcedimentoComponent
+                path: 'tiposervico/criar',
+                component: CreateTipoServicoComponent
+            },
+            {
+                path: 'tiposervico/edit/:id',
+                component: EditTipoServicoComponent
+            },
+            {
+                path: 'procedimento/list/:tiposervico',
+                component: ProcedimentoComponent
+            },
+            {
+                path: 'procedimento/criar/:tiposervico',
+                component: CreateProcedimentoComponent
+            },
+            {
+                path: 'procedimento/edit/:id',
+                component: EditProcedimentoComponent
             },
 
             {
@@ -89,27 +93,28 @@ const routes: Routes = [
                 component: DashboardComponent
             },
             {
-              path: 'triagem/:carro',
-              component: TriagemComponent
+                path: 'triagem/:carro',
+                component: TriagemComponent
             },
             {
-              path: 'triagem/:carro/criar',
-              component: CreateTriagemComponent
-            },{
-              path: 'triagem/:carro/edit/:id',
-              component: EditTriagemComponent
-            }
-            ,
-            {
-              path: 'usuario/',
-              component: UsuarioComponent
+                path: 'triagem/:carro/criar',
+                component: CreateTriagemComponent
             },
             {
-              path: 'usuario/criar',
-              component: CreateUsuarioComponent
-            },{
-              path: 'usuario/edit/:id',
-              component: EditUsuarioComponent
+                path: 'triagem/:carro/edit/:id',
+                component: EditTriagemComponent
+            },
+            {
+                path: 'usuario',
+                component: UsuarioComponent
+            },
+            {
+                path: 'usuario/criar',
+                component: CreateUsuarioComponent
+            },
+            {
+                path: 'usuario/edit/:id',
+                component: EditUsuarioComponent
             }
         ]
     },

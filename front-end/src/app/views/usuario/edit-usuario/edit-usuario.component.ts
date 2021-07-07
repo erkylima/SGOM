@@ -4,7 +4,7 @@ import {UsuarioService} from '../usuario.service';
 import {Component, OnInit, Renderer2} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Usuario} from '../../profile/usuario.model';
-import { Empresa } from '../../blank/empresa.model';
+import {Empresa} from '../../blank/empresa.model';
 
 @Component({
     selector: 'app-edit-usuario',
@@ -17,6 +17,7 @@ export class EditUsuarioComponent implements OnInit {
     id: string;
     empresa: Empresa;
     usuario: Usuario;
+    authorities: [{authority}];
 
     constructor(
         private renderer: Renderer2,
@@ -37,19 +38,25 @@ export class EditUsuarioComponent implements OnInit {
                 res.email,
                 res.password
             );
+
             this.usuario = new Usuario(
-                res.id,
+                Number(this.id),
                 this.empresa,
                 res.nome,
                 res.username,
                 res.email,
-                res.password
+                res.password,
+                null
             );
         });
         this.editUsuarioForm = new FormGroup({
             id: new FormControl(null),
+            empresa_id: new FormControl(null),
             nome: new FormControl(null, Validators.required),
-            cnpj: new FormControl(null, Validators.required)
+            email: new FormControl(null, Validators.required),
+            usuario: new FormControl(null, Validators.required),
+            senha: new FormControl(null),
+            authorities: new FormControl(null)
         });
     }
 

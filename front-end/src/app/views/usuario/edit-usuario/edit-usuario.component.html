@@ -39,7 +39,7 @@
                                         class="form-control"
                                     />
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="inputClientCompany"
@@ -48,7 +48,7 @@
                                     <input
                                         type="text"
                                         formControlName="email"
-                                        value="{{ usuario.email }}"
+                                        [(ngModel)]="usuario.email"
                                         id="email"
                                         class="form-control"
                                     />
@@ -62,7 +62,7 @@
                                     <input
                                         type="text"
                                         formControlName="usuario"
-                                        value="{{ usuario.username }}"
+                                        [(ngModel)]="usuario.username"
                                         id="usuario"
                                         class="form-control"
                                     />

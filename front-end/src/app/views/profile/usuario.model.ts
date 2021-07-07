@@ -19,7 +19,8 @@ export class Usuario {
         nome: string,
         usuario: string,
         email: string,
-        senha: string
+        senha: string,
+        authorities: [{authority}]
     ) {
         this.id = id;
         this.empresa = empresa;
@@ -27,6 +28,7 @@ export class Usuario {
         this.username = usuario;
         this.email = email;
         this.password = senha;
+        this.authorities = authorities;
     }
 }
 

@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {Observable} from 'rxjs';
+import {Empresa} from '../blank/empresa.model';
 import {Usuario} from '../profile/usuario.model';
 
 const httpOptions = {
@@ -24,24 +25,53 @@ export class UsuarioService {
     ) {}
 
     usuarioInfo: Usuario;
+    empresa: Empresa;
+    authorities: [{authority}];
+    role = localStorage.getItem('role');
 
-    async adicionarEditarUsuario({id, nome, cnpj, usuario, email, senha}) {
+    roleAdmin() {
+        return this.role == 'ROLE_ADMIN';
+    }
+    roleUser() {
+        return this.role == 'ROLE_USER';
+    }
+    roleOficina() {
+        return this.role == 'ROLE_OFICINA';
+    }
+
+    async adicionarEditarUsuario({
+        id,
+        nome,
+        usuario,
+        email,
+        senha,
+        authorities,
+        empresa_id
+    }) {
         try {
+            this.empresa = new Empresa(
+                empresa_id,
+                null,
+                null,
+                null,
+                null,
+                null
+            );
             this.usuarioInfo = new Usuario(
                 id,
+                this.empresa,
                 nome,
-                cnpj,
                 usuario,
                 email,
-                senha
+                senha,
+                null
             );
-            console.log(this.usuarioInfo);
 
             await this.adicionarEditarUsuarioFunction(
                 this.usuarioInfo
             ).subscribe(
                 (data) => {
-                    this.toastr.success('Usuario criada com sucesso!');
+                    this.toastr.success('Usuario criado com sucesso!');
 
                     this.router.navigate(['/usuario']);
                 },
@@ -57,21 +87,32 @@ export class UsuarioService {
         }
     }
 
-    async update({id, nome, cnpj, usuario, email, senha}) {
+    async update({id, nome, usuario, email, senha, authorities, empresa_id}) {
         try {
+            this.empresa = new Empresa(
+                empresa_id,
+                null,
+                null,
+                null,
+                null,
+                null
+            );
+
             this.usuarioInfo = new Usuario(
                 id,
+                this.empresa,
                 nome,
-                cnpj,
                 usuario,
                 email,
-                senha
+                senha,
+                null
             );
+
             console.log(this.usuarioInfo);
 
             await this.updateUsuarioFunction(id, this.usuarioInfo).subscribe(
                 (data) => {
-                    this.toastr.success('Usuario atualizada com sucesso!');
+                    this.toastr.success('Usuario atualizado com sucesso!');
 
                     if (
                         localStorage.getItem('nome').toString() ===
@@ -104,13 +145,22 @@ export class UsuarioService {
 
     getUsuarios(): Observable<Usuario> {
         console.log(localStorage['token']);
-        return this.http.get<Usuario>(this.urlUsuarios + '/list', httpOptions);
+        if (this.roleAdmin()) {
+            return this.http.get<Usuario>(
+                this.urlUsuarios + '/rolelist/ROLE_ADMIN',
+                httpOptions
+            );
+        } else {
+            return this.http.get<Usuario>(
+                this.urlUsuarios +
+                    '/list/' +
+                    localStorage.getItem('empresa_id'),
+                httpOptions
+            );
+        }
     }
     getUsuarioFunction(id: string): Observable<Usuario> {
-        return this.http.get<Usuario>(
-            this.urlUsuarios + '/' + id + '/user',
-            httpOptions
-        );
+        return this.http.get<Usuario>(this.urlUsuarios + '/' + id, httpOptions);
     }
     updateUsuarioFunction(id: string, info: Usuario): Observable<Usuario> {
         return this.http.put<Usuario>(

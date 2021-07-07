@@ -30,20 +30,12 @@ export class EditEmpresaComponent implements OnInit {
 
         this.empresaService.getEmpresaFunction(this.id).subscribe((res) => {
             this.empresa = new Empresa(
-                res.empresa.id,
-                res.nome,
-                res.empresa['cnpj'],
-                res.username,
-                res.email,
-                res.password
-            );
-            this.usuario = new Usuario(
                 res.id,
-                this.empresa,
                 res.nome,
-                res.username,
-                res.email,
-                res.password
+                res['cnpj'],
+                null,
+                null,
+                null
             );
         });
         this.editEmpresaForm = new FormGroup({

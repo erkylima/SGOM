@@ -52,34 +52,6 @@
                                     />
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="inputClientCompany"
-                                        >Email</label
-                                    >
-                                    <input
-                                        type="text"
-                                        formControlName="email"
-                                        value="{{ usuario.email }}"
-                                        id="email"
-                                        class="form-control"
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="inputClientCompany"
-                                        >Usuario</label
-                                    >
-                                    <input
-                                        type="text"
-                                        formControlName="usuario"
-                                        value="{{ usuario.username }}"
-                                        id="usuario"
-                                        class="form-control"
-                                    />
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
                             <app-button
@@ -87,7 +59,8 @@
                                 [block]="true"
                                 [text]="'Atualizar'"
                                 [loading]="isAuthLoading"
-                            ></app-button>
+                            >
+                            </app-button>
                         </div>
                     </form>
                 </div>

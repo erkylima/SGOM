@@ -71,7 +71,7 @@ public class EmpresaController {
     	    
     	Empresa emp_criada = repository.save(empresa);
     	
-    	Usuario usuario = new Usuario(emp_criada,empresaform.getNome(),empresaform.getUsuario(),empresaform.getSenha(),empresaform.getEmail(),"ROLE_OFICINA");
+    	Usuario usuario = new Usuario(emp_criada,empresaform.getNome(),empresaform.getUsuario(),encoder.encode(empresaform.getSenha()),empresaform.getEmail(),"ROLE_OFICINA");
     	repositoryUsuario.save(usuario);
     	
     	return new ResponseEntity<>(new ResponseMessage("Empresa criada com sucesso!"), HttpStatus.OK);
@@ -79,18 +79,15 @@ public class EmpresaController {
     
     @GetMapping("/{id}")
     Empresa getEmpresa(@PathVariable Long id) {
-
-    	Usuario usuario = repositoryUsuario.findByEmpresaId(id);
-    	log.info("Meu nome é: " + usuario.getNome());
-    	
     	return repository.findById(id).get();
     }
     
     @GetMapping("/{id}/user")
-    Usuario getUsuarioEmpresa(@PathVariable Long id) {
+    List<Usuario> getUsuarioEmpresa(@PathVariable Long id) {
+    	int idint= id.intValue();  
+    	log.info("Meu nome é: " + id);
 
-    	Usuario usuario = repositoryUsuario.findByEmpresaId(id);
-    	log.info("Meu nome é: " + usuario.getNome());
+    	List<Usuario> usuario = repositoryUsuario.findByEmpresaId(id);
     	
     	return usuario;
     }
@@ -120,9 +117,6 @@ public class EmpresaController {
     	Empresa empresa = repository.findById(id).get();
     	empresa.setNome(empresaform.getNome());
     	empresa.setCnpj(empresaform.getCnpj());
-    	Usuario usuario = repositoryUsuario.findByEmpresaId(id);
-    	usuario.setNome(empresa.getNome());
-    	repositoryUsuario.save(usuario);
     	repository.save(empresa);
     	return new ResponseEntity<>(new ResponseMessage("Empresa editada com sucesso!"), HttpStatus.OK);
     }
