@@ -24,6 +24,9 @@ import { CreateProcedimentoComponent } from './views/procedimento/create-procedi
 import { TriagemComponent } from './views/triagem/triagem.component';
 import { CreateTriagemComponent } from './views/triagem/create-triagem/create-triagem.component';
 import { EditTriagemComponent } from './views/triagem/edit-triagem/edit-triagem.component';
+import { UsuarioComponent } from './views/usuario/usuario.component';
+import { CreateUsuarioComponent } from './views/usuario/create-usuario/create-usuario.component';
+import { EditUsuarioComponent } from './views/usuario/edit-usuario/edit-usuario.component';
 
 const routes: Routes = [
     {
@@ -95,6 +98,18 @@ const routes: Routes = [
             },{
               path: 'triagem/:carro/edit/:id',
               component: EditTriagemComponent
+            }
+            ,
+            {
+              path: 'usuario/',
+              component: UsuarioComponent
+            },
+            {
+              path: 'usuario/criar',
+              component: CreateUsuarioComponent
+            },{
+              path: 'usuario/edit/:id',
+              component: EditUsuarioComponent
             }
         ]
     },

@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Empresa Page</h1>
+                <h1>Usuario Page</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -22,11 +22,11 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Adicionar Empresa</h3>
+                <h3 class="card-title">Adicionar Usuario</h3>
             </div>
-            <div *ngIf="empresa" class="card-body">
+            <div *ngIf="usuario" class="card-body">
                 <div class="container-fluid">
-                    <form [formGroup]="editEmpresaForm" (ngSubmit)="update()">
+                    <form [formGroup]="editUsuarioForm" (ngSubmit)="update()">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -34,24 +34,12 @@
                                     <input
                                         type="text"
                                         formControlName="nome"
-                                        [(ngModel)]="empresa.nome"
+                                        [(ngModel)]="usuario.nome"
                                         id="nome"
                                         class="form-control"
                                     />
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="inputClientCompany">CNPJ</label>
-                                    <input
-                                        type="text"
-                                        formControlName="cnpj"
-                                        id="cnpj"
-                                        [(ngModel)]="empresa.cnpj"
-                                        class="form-control"
-                                    />
-                                </div>
-                            </div>
+                            </div>                            
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="inputClientCompany"

@@ -1,4 +1,3 @@
-import {Empresa} from './empresa.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
@@ -16,19 +15,19 @@ const httpOptions = {
 @Injectable({
     providedIn: 'root'
 })
-export class EmpresaService {
-    private urlEmpresas = 'http://localhost:8080/empresas';
+export class UsuarioService {
+    private urlUsuarios = 'http://localhost:8080/usuarios';
     constructor(
         private router: Router,
         private toastr: ToastrService,
         private http: HttpClient
     ) {}
 
-    empresaInfo: Empresa;
+    usuarioInfo: Usuario;
 
-    async adicionarEditarEmpresa({id, nome, cnpj, usuario, email, senha}) {
+    async adicionarEditarUsuario({id, nome, cnpj, usuario, email, senha}) {
         try {
-            this.empresaInfo = new Empresa(
+            this.usuarioInfo = new Usuario(
                 id,
                 nome,
                 cnpj,
@@ -36,15 +35,15 @@ export class EmpresaService {
                 email,
                 senha
             );
-            console.log(this.empresaInfo);
+            console.log(this.usuarioInfo);
 
-            await this.adicionarEditarEmpresaFunction(
-                this.empresaInfo
+            await this.adicionarEditarUsuarioFunction(
+                this.usuarioInfo
             ).subscribe(
                 (data) => {
-                    this.toastr.success('Empresa criada com sucesso!');
+                    this.toastr.success('Usuario criada com sucesso!');
 
-                    this.router.navigate(['/empresa']);
+                    this.router.navigate(['/usuario']);
                 },
                 (error) => {
                     this.toastr.error(
@@ -60,7 +59,7 @@ export class EmpresaService {
 
     async update({id, nome, cnpj, usuario, email, senha}) {
         try {
-            this.empresaInfo = new Empresa(
+            this.usuarioInfo = new Usuario(
                 id,
                 nome,
                 cnpj,
@@ -68,15 +67,15 @@ export class EmpresaService {
                 email,
                 senha
             );
-            console.log(this.empresaInfo);
+            console.log(this.usuarioInfo);
 
-            await this.updateEmpresaFunction(id, this.empresaInfo).subscribe(
+            await this.updateUsuarioFunction(id, this.usuarioInfo).subscribe(
                 (data) => {
-                    this.toastr.success('Empresa atualizada com sucesso!');
+                    this.toastr.success('Usuario atualizada com sucesso!');
 
                     if (
                         localStorage.getItem('nome').toString() ===
-                        this.empresaInfo.nome
+                        this.usuarioInfo.nome
                     ) {
                         localStorage.removeItem('nome');
                         console.log(localStorage.getItem('nome'));
@@ -87,9 +86,9 @@ export class EmpresaService {
 
                     console.log(
                         localStorage.getItem('nome').toString() ===
-                            this.empresaInfo.nome
+                            this.usuarioInfo.nome
                     );
-                    this.router.navigate(['/empresa']);
+                    this.router.navigate(['/usuario']);
                 },
                 (error) => {
                     this.toastr.error(
@@ -103,33 +102,33 @@ export class EmpresaService {
         }
     }
 
-    getEmpresas(): Observable<Empresa> {
+    getUsuarios(): Observable<Usuario> {
         console.log(localStorage['token']);
-        return this.http.get<Empresa>(this.urlEmpresas + '/list', httpOptions);
+        return this.http.get<Usuario>(this.urlUsuarios + '/list', httpOptions);
     }
-    getEmpresaFunction(id: string): Observable<Usuario> {
+    getUsuarioFunction(id: string): Observable<Usuario> {
         return this.http.get<Usuario>(
-            this.urlEmpresas + '/' + id + '/user',
+            this.urlUsuarios + '/' + id + '/user',
             httpOptions
         );
     }
-    updateEmpresaFunction(id: string, info: Empresa): Observable<Empresa> {
-        return this.http.put<Empresa>(
-            this.urlEmpresas + '/' + id,
+    updateUsuarioFunction(id: string, info: Usuario): Observable<Usuario> {
+        return this.http.put<Usuario>(
+            this.urlUsuarios + '/' + id,
             info,
             httpOptions
         );
     }
-    adicionarEditarEmpresaFunction(info: Empresa): Observable<string> {
+    adicionarEditarUsuarioFunction(info: Usuario): Observable<string> {
         return this.http.post<string>(
-            this.urlEmpresas + '/add',
+            this.urlUsuarios + '/add',
             info,
             httpOptions
         );
     }
     delete(id: string): Observable<string> {
         return this.http.delete<string>(
-            this.urlEmpresas + '/' + id,
+            this.urlUsuarios + '/' + id,
             httpOptions
         );
     }

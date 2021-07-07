@@ -1,18 +1,18 @@
-import {Empresa} from './../empresa.model';
 import {ToastrService} from 'ngx-toastr';
 import {FormGroup, Validators, FormControl} from '@angular/forms';
-import {EmpresaService} from '../empresa.service';
+import {UsuarioService} from '../usuario.service';
 import {Component, OnInit, Renderer2} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Usuario} from '../../profile/usuario.model';
+import { Empresa } from '../../blank/empresa.model';
 
 @Component({
-    selector: 'app-edit-empresa',
-    templateUrl: './edit-empresa.component.html',
-    styleUrls: ['./edit-empresa.component.scss']
+    selector: 'app-edit-usuario',
+    templateUrl: './edit-usuario.component.html',
+    styleUrls: ['./edit-usuario.component.scss']
 })
-export class EditEmpresaComponent implements OnInit {
-    public editEmpresaForm: FormGroup;
+export class EditUsuarioComponent implements OnInit {
+    public editUsuarioForm: FormGroup;
     public isAuthLoading = false;
     id: string;
     empresa: Empresa;
@@ -21,14 +21,14 @@ export class EditEmpresaComponent implements OnInit {
     constructor(
         private renderer: Renderer2,
         private toastr: ToastrService,
-        private empresaService: EmpresaService,
+        private usuarioService: UsuarioService,
         private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
         this.id = this.route.snapshot.paramMap.get('id');
 
-        this.empresaService.getEmpresaFunction(this.id).subscribe((res) => {
+        this.usuarioService.getUsuarioFunction(this.id).subscribe((res) => {
             this.empresa = new Empresa(
                 res.empresa.id,
                 res.nome,
@@ -46,7 +46,7 @@ export class EditEmpresaComponent implements OnInit {
                 res.password
             );
         });
-        this.editEmpresaForm = new FormGroup({
+        this.editUsuarioForm = new FormGroup({
             id: new FormControl(null),
             nome: new FormControl(null, Validators.required),
             cnpj: new FormControl(null, Validators.required)
@@ -54,10 +54,10 @@ export class EditEmpresaComponent implements OnInit {
     }
 
     update() {
-        if (this.editEmpresaForm.valid) {
+        if (this.editUsuarioForm.valid) {
             this.isAuthLoading = true;
-            this.editEmpresaForm.value.id = this.id;
-            this.empresaService.update(this.editEmpresaForm.value);
+            this.editUsuarioForm.value.id = this.id;
+            this.usuarioService.update(this.editUsuarioForm.value);
             this.isAuthLoading = false;
         } else {
             this.toastr.error(

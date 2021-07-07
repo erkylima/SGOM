@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Empresa Page</h1>
+                <h1>Usuario Page</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Carro Page</li>
+                    <li class="breadcrumb-item active">Usuario Page</li>
                 </ol>
             </div>
         </div>
@@ -22,11 +22,11 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Adicionar Empresa</h3>
+                <h3 class="card-title">Adicionar Usuario</h3>
             </div>
             <div class="card-body">
                 <div class="container-fluid">
-                    <form [formGroup]="criarEmpresaForm" (ngSubmit)="save()">
+                    <form [formGroup]="criarUsuarioForm" (ngSubmit)="save()">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -38,18 +38,7 @@
                                         class="form-control"
                                     />
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="inputClientCompany">CNPJ</label>
-                                    <input
-                                        type="text"
-                                        formControlName="cnpj"
-                                        id="cnpj"
-                                        class="form-control"
-                                    />
-                                </div>
-                            </div>
+                            </div>                            
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="inputClientCompany"

@@ -1,32 +1,32 @@
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {Empresa} from './empresa.model';
-import {EmpresaService} from './empresa.service';
+import {UsuarioService} from './usuario.service';
 import {Component, OnInit, Renderer2} from '@angular/core';
+import { Usuario } from '../profile/usuario.model';
 
 @Component({
-    selector: 'app-blank',
-    templateUrl: './blank.component.html',
-    styleUrls: ['./blank.component.scss']
+    selector: 'app-usuario',
+    templateUrl: './usuario.component.html',
+    styleUrls: ['./usuario.component.scss']
 })
-export class BlankComponent implements OnInit {
+export class UsuarioComponent implements OnInit {
     constructor(
         private router: Router,
         private renderer: Renderer2,
         private toastr: ToastrService,
-        private empresaService: EmpresaService
+        private usuarioService: UsuarioService
     ) {}
 
-    empresaList: Empresa;
+    usuarioList: Usuario;
 
     ngOnInit() {
-        this.empresaService
-            .getEmpresas()
-            .subscribe((res) => (this.empresaList = res));
+        this.usuarioService
+            .getUsuarios()
+            .subscribe((res) => (this.usuarioList = res));
     }
 
     delete(id: string) {
-        this.empresaService.delete(id).subscribe(
+        this.usuarioService.delete(id).subscribe(
             (data) => {
                 this.toastr.error('Apagando tipo de serviço');
                 this.router.navigate(['/']);

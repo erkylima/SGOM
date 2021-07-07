@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 
-import {BlankComponent} from './blank.component';
+import {BlankComponent} from './usuario.component';
 
 describe('BlankComponent', () => {
     let component: BlankComponent;

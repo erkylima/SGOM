@@ -41,6 +41,9 @@ import { CreateProcedimentoComponent } from './views/procedimento/create-procedi
 import { CreateTriagemComponent } from './views/triagem/create-triagem/create-triagem.component';
 import { EditTriagemComponent } from './views/triagem/edit-triagem/edit-triagem.component';
 import { TriagemComponent } from './views/triagem/triagem.component';
+import { UsuarioComponent } from './views/usuario/usuario.component';
+import { CreateUsuarioComponent } from './views/usuario/create-usuario/create-usuario.component';
+import { EditUsuarioComponent } from './views/usuario/edit-usuario/edit-usuario.component';
 
 registerLocaleData(localeEn, 'pt-BR');
 
@@ -77,6 +80,9 @@ registerLocaleData(localeEn, 'pt-BR');
         CreateTriagemComponent,
         EditTriagemComponent,
         TriagemComponent,
+        UsuarioComponent,
+        CreateUsuarioComponent,
+        EditUsuarioComponent
     ],
     imports: [
         BrowserModule,
