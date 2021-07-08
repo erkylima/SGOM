@@ -2,8 +2,10 @@ package com.manuserv.apirest.resource;
 
 import com.manuserv.apirest.message.request.EmpresaForm;
 import com.manuserv.apirest.message.response.ResponseMessage;
+import com.manuserv.apirest.models.Carro;
 import com.manuserv.apirest.models.Empresa;
 import com.manuserv.apirest.models.Usuario;
+import com.manuserv.apirest.repository.CarroRepository;
 import com.manuserv.apirest.repository.EmpresaRepository;
 import com.manuserv.apirest.repository.UsuarioRepository;
 
@@ -41,6 +43,9 @@ public class EmpresaController {
     
     @Autowired
     private EmpresaRepository repository;
+
+    @Autowired
+    private CarroRepository repositoryCarro;
     
    @Autowired
    private UsuarioRepository repositoryUsuario;
@@ -64,7 +69,7 @@ public class EmpresaController {
 			return new ResponseEntity<>(new ResponseMessage("Fail -> Todos os campos precisam ser preenchidos!"),
 					HttpStatus.BAD_REQUEST);
 		}
-    	
+  
     	
     	Long id = new Long(0);
     	Empresa empresa = new Empresa(id,empresaform.getNome(),empresaform.getCnpj());
@@ -103,7 +108,15 @@ public class EmpresaController {
     }
     
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Long id) {      
+    void delete(@PathVariable Long id) {     
+    	List<Usuario> usuarios = repositoryUsuario.findByEmpresaId(id);
+    	for (Usuario usuario : usuarios){
+    		repositoryUsuario.deleteById(usuario.getId());
+    	}
+    	List<Carro> carros = repositoryCarro.findByEmpresaId(id);
+    	for (Carro carro : carros){
+    		repositoryUsuario.deleteById(carro.getId());
+    	}
     	repository.deleteById(id);
     }   
     

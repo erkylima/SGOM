@@ -25,4 +25,10 @@ CREATE TRIGGER manuserv_audit_INS AFTER INSERT OR UPDATE OR DELETE
 ON ms_carro 
 FOR EACH ROW EXECUTE PROCEDURE process_carro_audit();
 
-
+CREATE OR REPLACE PROCEDURE procedure_chama_usuarios(_parameter varchar,INOUT result refcursor)
+LANGUAGE 'plpgsql'
+AS $BODY$         
+BEGIN
+open result for SELECT * from ms_empresa where nome = _parameter; 
+END;
+$BODY$;

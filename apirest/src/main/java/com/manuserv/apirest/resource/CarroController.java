@@ -4,8 +4,10 @@ import com.manuserv.apirest.message.request.CarroForm;
 import com.manuserv.apirest.message.response.ResponseMessage;
 import com.manuserv.apirest.models.Carro;
 import com.manuserv.apirest.models.Empresa;
+import com.manuserv.apirest.models.Usuario;
 import com.manuserv.apirest.repository.CarroRepository;
 import com.manuserv.apirest.repository.EmpresaRepository;
+import com.manuserv.apirest.repository.UsuarioRepository;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -35,6 +37,9 @@ public class CarroController {
     
     @Autowired
     private CarroRepository repository;
+    
+    @Autowired
+    private UsuarioRepository repositoryUser;
     
     @Autowired
     private EmpresaRepository repositoryEmp;
@@ -70,7 +75,8 @@ public class CarroController {
     }
 
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Long id) {      
+    void delete(@PathVariable Long id) {  
+    	
     	repository.deleteById(id);
     }
     
