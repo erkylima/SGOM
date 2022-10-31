@@ -1,4 +1,4 @@
-# PBD_20-1_-ERKY
+# Sistema de Gerenciamento de Oficinas Mecânicas
 ### O objetivo desse projeto é o desenvolvimento de um ambiente de cadastro de oficinas e seja catalogado um sistema de triagem de serviços mecânicos para serem executados nos carros dessas oficinas.
 
 #### Para abrir o projeto que está disposto nesse repositório do github tanto o backend em Spring Boot e o frontend em Angular você precisará ter ou o NetBeans ou o Eclipse instalado na sua mágina com a versão 1.8 do java. Você também precisará ter o Node.Js instalado no seu computador para fazer o download das dependencias e iniciar o servidor.
